@@ -2,6 +2,7 @@
 
 /* Melhorias gerais */
 :root {
+    --header-height: 60px; /* Define a altura do cabeçalho, ajuste conforme necessário */
 
     /* DarkMode Colors */
     --dark-primary-color: #FF3C3C;
