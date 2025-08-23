@@ -43,6 +43,11 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Ajuste para evitar problemas com 100vh em dispositivos móveis */
+html, body {
+    height: 100dvh; /* Usa dynamic viewport height para evitar exceder a barra de navegação */
+}
+
 header {
     margin: 20px;
 }
