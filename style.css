@@ -2,7 +2,8 @@
 
 /* Melhorias gerais */
 :root {
-    --header-height: 60px; /* Define a altura do cabeçalho, ajuste conforme necessário */
+    --header-height: 40px;
+    /* Define a altura do cabeçalho, ajuste conforme necessário */
 
     /* DarkMode Colors */
     --dark-primary-color: #FF3C3C;
@@ -45,8 +46,10 @@ body {
 }
 
 /* Ajuste para evitar problemas com 100vh em dispositivos móveis */
-html, body {
-    height: 100dvh; /* Usa dynamic viewport height para evitar exceder a barra de navegação */
+html,
+body {
+    height: 100dvh;
+    /* Usa dynamic viewport height para evitar exceder a barra de navegação */
 }
 
 header {
@@ -61,8 +64,10 @@ header .controlButtons {
 
 /* Ajustando o tamanho dos ícones no header */
 header i {
-    font-size: 2rem; /* Mesmo tamanho dos ícones na classe option */
-    cursor: pointer; /* Adicionando cursor pointer aos ícones no header */
+    font-size: 2rem;
+    /* Mesmo tamanho dos ícones na classe option */
+    cursor: pointer;
+    /* Adicionando cursor pointer aos ícones no header */
     color: var(--text-color);
     transition: color 0.3s ease;
 }
@@ -87,11 +92,21 @@ main {
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     text-align: center;
-    position: relative; /* Define o main como referência para posicionamento */
-    overflow: hidden; /* Garante que o conteúdo das páginas não ultrapasse o main */
+    position: relative;
+    overflow: hidden;
+    height: auto; /* Permite que o conteúdo determine a altura */
+    box-sizing: border-box;
+}
+
+/* Ajustando a altura da div container dentro do main */
+.container {
+    height: 85%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 section#presentation {
@@ -100,7 +115,7 @@ section#presentation {
 }
 
 section#presentation h1 {
-    font-size: 30px;
+    font-size: 27px;
 }
 
 /* Estilizando o span dentro do h1 na seção presentation */
@@ -115,7 +130,7 @@ section#mainButtons {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, auto);
-    gap: 20px 35px;
+    gap: 20px 30px;
     justify-content: center;
     align-items: center;
 }
@@ -148,7 +163,7 @@ section#mainButtons label:hover {
 
 /* Aumentando o tamanho dos ícones */
 section#mainButtons .option i {
-    font-size: 2.5rem;
+    font-size: 2.3rem;
     margin-bottom: 10px;
 }
 
@@ -180,7 +195,8 @@ footer a:hover {
 
 /* Estilo para a página about */
 #pages .about {
-    display: block; /* Visível inicialmente para edição */
+    display: block;
+    /* Visível inicialmente para edição */
     position: fixed;
     bottom: 0;
     left: 0;
@@ -210,7 +226,8 @@ footer a:hover {
 
 /* Ajustando as cores do ícone na classe title para seguir o padrão */
 #pages .about .title i {
-    font-size: 2rem; /* Mesmo tamanho dos ícones na classe option */
+    font-size: 2rem;
+    /* Mesmo tamanho dos ícones na classe option */
     color: var(--text-color);
     transition: color 0.3s ease;
 }
@@ -231,7 +248,8 @@ footer a:hover {
 #pages .about .content {
     background-color: var(--light-background-color);
     color: var(--light-text-color);
-    height: calc(100% - 90px); /* Subtraindo o espaço ocupado pela classe title */
+    height: calc(100% - 90px);
+    /* Subtraindo o espaço ocupado pela classe title */
     overflow-y: auto;
     padding: 20px;
     box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -243,7 +261,8 @@ footer a:hover {
 #pages .formation,
 #pages .faq,
 #pages .contact {
-    display: block; /* Visível inicialmente para edição */
+    display: block;
+    /* Visível inicialmente para edição */
     position: fixed;
     bottom: 0;
     left: 0;
@@ -285,7 +304,8 @@ footer a:hover {
 #pages .formation .title i,
 #pages .faq .title i,
 #pages .contact .title i {
-    font-size: 2rem; /* Mesmo tamanho dos ícones na classe option */
+    font-size: 2rem;
+    /* Mesmo tamanho dos ícones na classe option */
     color: var(--text-color);
     transition: color 0.3s ease;
 }
@@ -312,21 +332,29 @@ footer a:hover {
 
 /* Limita o espaço das páginas ao elemento main */
 main {
-    position: relative; /* Define o main como referência para posicionamento */
-    overflow: hidden; /* Garante que o conteúdo das páginas não ultrapasse o main */
+    position: relative;
+    /* Define o main como referência para posicionamento */
+    overflow: hidden;
+    /* Garante que o conteúdo das páginas não ultrapasse o main */
 }
 
-#pages > div {
-    position: absolute; /* Posiciona as páginas dentro do main */
-    top: 0; /* Garante que o topo das páginas seja idêntico ao topo do main */
+#pages>div {
+    position: absolute;
+    /* Posiciona as páginas dentro do main */
+    top: 0;
+    /* Garante que o topo das páginas seja idêntico ao topo do main */
     left: 0;
     width: 100%;
-    height: calc(100% - var(--header-height)); /* Ajusta a altura para considerar o header */
-    top: var(--header-height); /* Posiciona as páginas logo abaixo do header */
+    height: calc(100% - var(--header-height));
+    /* Ajusta a altura para considerar o header */
+    top: var(--header-height);
+    /* Retorna o topo ao valor original */
+    height: calc(100% - var(--header-height));
+    /* Ajusta a altura para refletir o topo original */
 }
 
 /* Consolidando estilos comuns para as páginas */
-#pages > div {
+#pages>div {
     display: block;
     position: fixed;
     bottom: 0;
