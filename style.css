@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Melhorias gerais */
+:root {
+
+    /* DarkMode Colors */
+    --dark-primary-color: #FF3C3C;
+    --dark-secondary-color: #b62828;
+    --dark-background-color: #222222;
+    --dark-text-color: #ffffff;
+
+    /* LightMode Colors */
+    --light-primary-color: #FF3C3C;
+    --light-secondary-color: #b62828;
+    --light-background-color: #ffffff;
+    --light-text-color: #222222;
+
+    --font-family: 'Poppins', sans-serif;
+
+    /* Atualizando para usar variáveis dinâmicas de tema */
+    --background-color: var(--dark-background-color);
+    --text-color: var(--dark-text-color);
+    --primary-color: var(--dark-primary-color);
+    --secondary-color: var(--dark-secondary-color);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    line-height: 1.6;
+    padding: 15px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    margin: 20px;
+}
+
+header .controlButtons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+/* Ajustando o tamanho dos ícones no header */
+header i {
+    font-size: 2rem; /* Mesmo tamanho dos ícones na classe option */
+    cursor: pointer; /* Adicionando cursor pointer aos ícones no header */
+    color: var(--text-color);
+}
+
+/* Adicionando animações de hover e active aos ícones no header */
+header i:hover {
+    color: var(--dark-primary-color);
+    transform: scale(1.1);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+header i:active {
+    color: var(--dark-secondary-color);
+    transform: scale(0.95);
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 10px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+section#presentation {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+section#presentation h1 {
+    font-size: 30px;
+}
+
+/* Estilizando o span dentro do h1 na seção presentation */
+section#presentation h1 span {
+    text-decoration: underline;
+    color: var(--primary-color);
+}
+
+/* Alterando o layout de mainButtons para grid */
+section#mainButtons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 20px 35px;
+    justify-content: center;
+    align-items: center;
+}
+
+section#mainButtons .option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: color 0.3s ease;
+    color: var(--text-color);
+}
+
+section#mainButtons .option:hover {
+    color: var(--primary-color);
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+section#mainButtons .option:active {
+    color: var(--secondary-color);
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
+}
+
+section#mainButtons label:hover {
+    cursor: pointer;
+}
+
+/* Aumentando o tamanho dos ícones */
+section#mainButtons .option i {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--background-color);
+    padding: 10px 0;
+    color: var(--text-color);
+}
+
+footer a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-style: italic;
+    font-size: 15px;
+    transition: text-decoration 0.3s ease;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal</title>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 
 </head>
@@ -15,8 +15,8 @@
     <header>
 
         <div class="controlButtons">
-            <div id="darkLightMode">Modo Escuro</div>
-            <div id="soundOnOff">Modo Claro</div>
+            <div id="darkLightMode"><i class="fa-solid fa-sun"></i></div>
+            <div id="soundOnOff"><i class="fa-solid fa-volume-high"></i></div>
         </div>
 
     </header>
@@ -24,28 +24,42 @@
     <main>
 
         <section id="presentation">
-            <h1>Olá! Eu sou Leo Filipe</h1>
-            <p>Desenvolvedor, Desenhista e Apaixonado por Videojogos.</p>
+            <h1>Olá! Eu sou <span>Leo Filipe</span></h1>
+            <p>Desenvolvedor e artista</p>
         </section>
 
         <section id="mainButtons">
-            <div class="about">Botão 1</div>
-            <label for="about">Sobre</label>
 
-            <div class="project">Botão 2</div>
-            <label for="experience">Experiência</label>
+            <div class="option">
+                <div class="about"><i class="fa-solid fa-user"></i></div>
+                <label for="about">Sobre</label>
+            </div>
 
-            <div class="formation">Botão 4</div>
-            <label for="formation">Formação</label>
+            <div class="option">
+                <div class="project"><i class="fa-solid fa-folder-open"></i></div>
+                <label for="project">Projetos</label>
+            </div>
 
-            <div class="faq">Botão 5</div>
-            <label for="faq">FAQ</label>
+            <div class="option">
+                <div class="experience"><i class="fa-solid fa-briefcase"></i></div>
+                <label for="experience">Experiência</label>
+            </div>
 
-            <div class="link">Botão 6</div>
-            <label for="link">Link</label>
+            <div class="option">
+                <div class="faq"><i class="fa-solid fa-school"></i></div>
+                <label for="faq">Formação</label>
+            </div>
 
-            <div class="contact">Botão 7</div>
-            <label for="contact">Contacto</label>
+            <div class="option">
+                <div class="link"><i class="fa-solid fa-question"></i></div>
+                <label for="link">FAQ</label>
+            </div>
+
+            <div class="option">
+                <div class="contact"><i class="fa-solid fa-envelope"></i></div>
+                <label for="contact">Contacto</label>
+            </div>
+
         </section>
 
     </main>
@@ -54,7 +68,30 @@
         <p>&copy; 2025 <a href="https://github.com/leofilipee">Leo Filipe</a>. Todos os direitos reservados.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        const darkLightModeButton = document.querySelector('#darkLightMode i');
+        const root = document.documentElement;
+
+        darkLightModeButton.addEventListener('click', () => {
+            if (darkLightModeButton.classList.contains('fa-sun')) {
+                // Alterar para o modo Light
+                darkLightModeButton.classList.remove('fa-sun');
+                darkLightModeButton.classList.add('fa-moon');
+                root.style.setProperty('--background-color', 'var(--light-background-color)');
+                root.style.setProperty('--text-color', 'var(--light-text-color)');
+                root.style.setProperty('--primary-color', 'var(--light-primary-color)');
+                root.style.setProperty('--secondary-color', 'var(--light-secondary-color)');
+            } else {
+                // Alterar para o modo Dark
+                darkLightModeButton.classList.remove('fa-moon');
+                darkLightModeButton.classList.add('fa-sun');
+                root.style.setProperty('--background-color', 'var(--dark-background-color)');
+                root.style.setProperty('--text-color', 'var(--dark-text-color)');
+                root.style.setProperty('--primary-color', 'var(--dark-primary-color)');
+                root.style.setProperty('--secondary-color', 'var(--dark-secondary-color)');
+            }
+        });
+    </script>
 
 </body>
 
