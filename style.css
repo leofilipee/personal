@@ -450,7 +450,58 @@ main {
     transition: opacity 0.2s ease;
 }
 
-/* Estilo para a página contact */
+/* ------------------------------- */
+/* Estilo para a página about */
+/* -------------------------------- */
+
+#pages .about .content{
+    padding: 0 20px 150px 20px;
+}
+
+#pages .about .content .pdp{
+    width: 250px;
+    height: 250px;
+    background-color: var(--dark-primary-color);
+    border-radius: 50%;
+    margin: 25px auto;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.342);
+}
+
+#pages .about .content .name{
+    color: var(--primary-color);
+    border-radius: 50%;
+    margin: 25px auto;
+    font-size: 2rem;
+}
+
+#pages .about .content .description{
+    text-align: center;
+    margin-bottom: 25px;
+    line-height: 1.8;
+}
+
+#pages .about .content .description hr{
+    margin: 20px 0;
+}
+
+#pages .about .content .extra{
+    text-align: justify;
+}
+
+#pages .about .content .extra h1{
+    margin: 20px 0;
+}
+
+#pages .about .content .extra ul{
+    margin: 10px 0 0 30px;
+    line-height: 1.8;
+}
+
+
+/* ------------------------------- */
+/* Estilo para a página contact 
+/* -------------------------------- */
+
 #pages .contact .content h1 {
     margin: 20px;
 }
