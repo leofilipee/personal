@@ -90,6 +90,8 @@ main {
     justify-content: center;
     align-items: center;
     text-align: center;
+    position: relative; /* Define o main como referência para posicionamento */
+    overflow: hidden; /* Garante que o conteúdo das páginas não ultrapasse o main */
 }
 
 section#presentation {
@@ -306,6 +308,21 @@ footer a:hover {
     color: var(--secondary-color);
     transform: scale(0.95);
     transition: transform 0.1s ease;
+}
+
+/* Limita o espaço das páginas ao elemento main */
+main {
+    position: relative; /* Define o main como referência para posicionamento */
+    overflow: hidden; /* Garante que o conteúdo das páginas não ultrapasse o main */
+}
+
+#pages > div {
+    position: absolute; /* Posiciona as páginas dentro do main */
+    top: 0; /* Garante que o topo das páginas seja idêntico ao topo do main */
+    left: 0;
+    width: 100%;
+    height: calc(100% - var(--header-height)); /* Ajusta a altura para considerar o header */
+    top: var(--header-height); /* Posiciona as páginas logo abaixo do header */
 }
 
 /* Consolidando estilos comuns para as páginas */
