@@ -471,7 +471,7 @@ main {
     color: var(--primary-color);
     border-radius: 50%;
     margin: 25px auto;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 #pages .about .content .description{
