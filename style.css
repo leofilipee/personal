@@ -323,5 +323,7 @@ footer a:hover {
 
 /* Ajuste para as páginas usarem 100dvh */
 #pages > div {
-    height: 100dvh; /* Usa dynamic viewport height para evitar problemas em dispositivos móveis */
+    height: calc(100dvh - var(--header-height)); /* Subtrai a altura do header ou qualquer espaço necessário */
+    margin-top: var(--header-height); /* Adiciona margem para evitar sobreposição */
+    box-sizing: border-box; /* Garante que o padding seja incluído no cálculo do tamanho */
 }
