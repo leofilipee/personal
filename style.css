@@ -459,8 +459,8 @@ main {
 }
 
 #pages .about .content .pdp{
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
     background-color: var(--dark-primary-color);
     border-radius: 50%;
     margin: 25px auto;
