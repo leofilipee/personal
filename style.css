@@ -308,23 +308,59 @@ footer a:hover {
     transition: transform 0.1s ease;
 }
 
-/* Estilo para a classe content dentro das páginas */
-#pages .project .content,
-#pages .experience .content,
-#pages .formation .content,
-#pages .faq .content,
-#pages .contact .content {
+/* Consolidando estilos comuns para as páginas */
+#pages > div {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100dvh - var(--header-height));
+    margin-top: var(--header-height);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    z-index: 1000;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    box-sizing: border-box;
+}
+
+#pages .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    margin: 10px 25px;
+}
+
+#pages .title h1 {
+    font-size: 1.5rem;
+    color: var(--text-color);
+}
+
+#pages .title i {
+    font-size: 2rem;
+    color: var(--text-color);
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+#pages .title i:hover {
+    color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+#pages .title i:active {
+    color: var(--secondary-color);
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
+}
+
+#pages .content {
     background-color: var(--light-background-color);
     color: var(--light-text-color);
-    height: calc(100% - 90px); /* Subtraindo o espaço ocupado pela classe title */
+    height: calc(100% - 90px);
     overflow-y: auto;
     padding: 20px;
     box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Ajuste para as páginas usarem 100dvh */
-#pages > div {
-    height: calc(100dvh - var(--header-height)); /* Subtrai a altura do header ou qualquer espaço necessário */
-    margin-top: var(--header-height); /* Adiciona margem para evitar sobreposição */
-    box-sizing: border-box; /* Garante que o padding seja incluído no cálculo do tamanho */
 }
