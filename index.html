@@ -7,10 +7,44 @@
     <title>Personal</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Animações para abrir e fechar páginas */
+        .page {
+            position: relative;
+            transform: translateY(100%);
+            opacity: 0;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+
+        .page.open {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .page.close {
+            transform: translateY(100%);
+            opacity: 0;
+        }
+
+        /* Estilo para a sobreposição */
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 10;
+            display: none;
+            transition: opacity 0.2s ease;
+        }
+    </style>
 
 </head>
 
 <body>
+    <div id="overlay"></div>
 
     <header>
 
@@ -46,18 +80,70 @@
             </div>
 
             <div class="option">
-                <div class="faq"><i class="fa-solid fa-school"></i></div>
-                <label for="faq">Formação</label>
+                <div class="formation"><i class="fa-solid fa-school"></i></div>
+                <label for="formation">Formação</label>
             </div>
 
             <div class="option">
-                <div class="link"><i class="fa-solid fa-question"></i></div>
-                <label for="link">FAQ</label>
+                <div class="faq"><i class="fa-solid fa-question"></i></div>
+                <label for="faq">FAQ</label>
             </div>
 
             <div class="option">
                 <div class="contact"><i class="fa-solid fa-envelope"></i></div>
                 <label for="contact">Contacto</label>
+            </div>
+
+        </section>
+
+        <section id="pages">
+
+            <div class="about page">
+                <div class="title">
+                    <h1>Sobre</h1>
+                    <i class="closeButton fa-solid fa-circle-xmark"></i>
+                </div>
+                <div class="content">Informações sobre mim.</div>
+            </div>
+
+            <div class="project page">
+                <div class="title">
+                    <h1>Projetos</h1>
+                    <i class="closeButton fa-solid fa-circle-xmark"></i>
+                </div>
+                <div class="content">Informações sobre mim.</div>
+            </div>
+
+            <div class="experience page">
+                <div class="title">
+                    <h1>Experiência</h1>
+                    <i class="closeButton fa-solid fa-circle-xmark"></i>
+                </div>
+                <div class="content">Informações sobre mim.</div>
+            </div>
+
+            <div class="formation page">
+                <div class="title">
+                    <h1>Formação</h1>
+                    <i class="closeButton fa-solid fa-circle-xmark"></i>
+                </div>
+                <div class="content">Informações sobre mim.</div>
+            </div>
+
+            <div class="faq page">
+                <div class="title">
+                    <h1>FAQ</h1>
+                    <i class="closeButton fa-solid fa-circle-xmark"></i>
+                </div>
+                <div class="content">Informações sobre mim.</div>
+            </div>
+
+            <div class="contact page">
+                <div class="title">
+                    <h1>Contacto</h1>
+                    <i class="closeButton fa-solid fa-circle-xmark"></i>
+                </div>
+                <div class="content">Informações sobre mim.</div>
             </div>
 
         </section>
@@ -89,6 +175,117 @@
                 root.style.setProperty('--text-color', 'var(--dark-text-color)');
                 root.style.setProperty('--primary-color', 'var(--dark-primary-color)');
                 root.style.setProperty('--secondary-color', 'var(--dark-secondary-color)');
+            }
+        });
+
+        const aboutIcon = document.querySelector('.option .about');
+        const aboutPage = document.querySelector('#pages .about');
+
+        // O script foi simplificado para remover configurações CSS inline
+
+        const closeButtons = document.querySelectorAll('.closeButton');
+
+        closeButtons.forEach((button) => {
+            button.addEventListener('click', (event) => {
+                const page = event.target.closest('.about, .project, .experience, .formation, .faq, .contact'); // Seleciona a página correspondente ao botão
+                if (page) {
+                    page.classList.remove('open');
+                    page.classList.add('close');
+                    setTimeout(() => {
+                        page.style.display = 'none';
+                    }, 500); // Tempo da animação
+                }
+            });
+        });
+
+        const option1 = document.querySelector('.option .about');
+
+        option1.addEventListener('click', () => {
+            pagesSection.style.display = 'block';
+        });
+
+        // Removendo todos os eventos de clique ligados aos mainButtons
+        const mainButtons = document.querySelectorAll('.option');
+
+        mainButtons.forEach((button) => {
+            const newButton = button.cloneNode(true);
+            button.parentNode.replaceChild(newButton, button);
+        });
+
+        const mainButtonsDivs = document.querySelectorAll('.option > div');
+        const mainButtonsLabels = document.querySelectorAll('.option > label');
+        const pages = document.querySelectorAll('#pages > div');
+        const overlay = document.querySelector('#overlay');
+
+        function openPage(targetClass) {
+            // Fechar todas as páginas com animação
+            pages.forEach((page) => {
+                if (page.classList.contains('open')) {
+                    page.classList.remove('open');
+                    page.classList.add('close');
+                    setTimeout(() => {
+                        page.style.display = 'none';
+                    }, 500); // Tempo da animação
+                }
+            });
+
+            // Abrir a página correspondente
+            const targetPage = document.querySelector(`#pages .${targetClass}`);
+            if (targetPage) {
+                targetPage.style.display = 'block';
+                setTimeout(() => {
+                    targetPage.classList.remove('close');
+                    targetPage.classList.add('open');
+                    overlay.style.display = 'block';
+                    overlay.style.opacity = '1'; // Mostrar a sobreposição rapidamente
+                }, 10); // Pequeno delay para garantir a transição
+            }
+        }
+
+        mainButtonsDivs.forEach((button) => {
+            button.addEventListener('click', () => {
+                const targetClass = button.classList[0];
+                openPage(targetClass);
+            });
+        });
+
+        mainButtonsLabels.forEach((label) => {
+            label.addEventListener('click', () => {
+                const targetClass = label.getAttribute('for');
+                openPage(targetClass);
+            });
+        });
+
+        closeButtons.forEach((button) => {
+            button.addEventListener('click', (event) => {
+                const page = event.target.closest('.about, .project, .experience, .formation, .faq, .contact');
+                if (page) {
+                    page.classList.remove('open');
+                    page.classList.add('close');
+                    setTimeout(() => {
+                        page.style.display = 'none';
+                        overlay.style.opacity = '0'; // Esconder a sobreposição rapidamente
+                        setTimeout(() => {
+                            overlay.style.display = 'none';
+                        }, 200); // Tempo da transição da sobreposição
+                    }, 500); // Tempo da animação
+                }
+            });
+        });
+
+        overlay.addEventListener('click', () => {
+            // Fechar a página aberta
+            const openPage = document.querySelector('#pages > div.open');
+            if (openPage) {
+                openPage.classList.remove('open');
+                openPage.classList.add('close');
+                setTimeout(() => {
+                    openPage.style.display = 'none';
+                    overlay.style.opacity = '0';
+                    setTimeout(() => {
+                        overlay.style.display = 'none';
+                    }, 200); // Tempo da transição da sobreposição
+                }, 500); // Tempo da animação da página
             }
         });
     </script>
