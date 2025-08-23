@@ -7,39 +7,6 @@
     <title>Personal</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* Animações para abrir e fechar páginas */
-        .page {
-            position: relative;
-            transform: translateY(100%);
-            opacity: 0;
-            transition: transform 0.5s ease, opacity 0.5s ease;
-        }
-
-        .page.open {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .page.close {
-            transform: translateY(100%);
-            opacity: 0;
-        }
-
-        /* Estilo para a sobreposição */
-        #overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(5px);
-            z-index: 10;
-            display: none;
-            transition: opacity 0.2s ease;
-        }
-    </style>
 
 </head>
 
@@ -88,7 +55,9 @@
                     <label for="contact">Contacto</label>
                 </div>
             </section>
+            
             <section id="pages">
+                
                 <div class="about page">
                     <div class="title">
                         <h1>Sobre</h1>
@@ -96,6 +65,7 @@
                     </div>
                     <div class="content">Informações sobre mim.</div>
                 </div>
+
                 <div class="project page">
                     <div class="title">
                         <h1>Projetos</h1>
@@ -103,6 +73,7 @@
                     </div>
                     <div class="content">Informações sobre mim.</div>
                 </div>
+
                 <div class="experience page">
                     <div class="title">
                         <h1>Experiência</h1>
@@ -110,6 +81,7 @@
                     </div>
                     <div class="content">Informações sobre mim.</div>
                 </div>
+
                 <div class="formation page">
                     <div class="title">
                         <h1>Formação</h1>
@@ -117,6 +89,7 @@
                     </div>
                     <div class="content">Informações sobre mim.</div>
                 </div>
+
                 <div class="faq page">
                     <div class="title">
                         <h1>FAQ</h1>
@@ -124,12 +97,23 @@
                     </div>
                     <div class="content">Informações sobre mim.</div>
                 </div>
+
                 <div class="contact page">
                     <div class="title">
                         <h1>Contacto</h1>
                         <i class="closeButton fa-solid fa-circle-xmark"></i>
                     </div>
-                    <div class="content">Informações sobre mim.</div>
+                    <div class="content">
+
+                        <h1>Envia-me um email!</h1>
+
+                        <p>Se quiser entrar em contacto comigo, por favor manda-me um email para <a href="mailto:l.filipecontact@gmail.com">l.filipecontact@gmail.com</a>.</p>
+
+                        <div class="email-draw"></div>
+
+                        <button>Enviar Email</button>
+
+                    </div>
                 </div>
             </section>
         </div>
@@ -141,6 +125,8 @@
     </footer>
 
     <script>
+
+        /* Gestão do Modo Escuro/Claro */
         const darkLightModeButton = document.querySelector('#darkLightMode i');
         const root = document.documentElement;
 
@@ -164,11 +150,8 @@
             }
         });
 
-        const aboutIcon = document.querySelector('.option .about');
-        const aboutPage = document.querySelector('#pages .about');
 
-        // O script foi simplificado para remover configurações CSS inline
-
+        /* Botões de Fechar */
         const closeButtons = document.querySelectorAll('.closeButton');
 
         closeButtons.forEach((button) => {
@@ -184,50 +167,34 @@
             });
         });
 
-        const option1 = document.querySelector('.option .about');
-
-        option1.addEventListener('click', () => {
-            pagesSection.style.display = 'block';
-        });
-
-        // Removendo todos os eventos de clique ligados aos mainButtons
-        const mainButtons = document.querySelectorAll('.option');
-
-        mainButtons.forEach((button) => {
-            const newButton = button.cloneNode(true);
-            button.parentNode.replaceChild(newButton, button);
-        });
-
+        /* Gestão das Páginas */
         const mainButtonsDivs = document.querySelectorAll('.option > div');
         const mainButtonsLabels = document.querySelectorAll('.option > label');
         const pages = document.querySelectorAll('#pages > div');
         const overlay = document.querySelector('#overlay');
 
+        /* Função para abrir uma página */
         function openPage(targetClass) {
+
             // Fechar todas as páginas com animação
             pages.forEach((page) => {
                 if (page.classList.contains('open')) {
                     page.classList.remove('open');
                     page.classList.add('close');
-                    setTimeout(() => {
-                        page.style.display = 'none';
-                    }, 500); // Tempo da animação
                 }
             });
 
             // Abrir a página correspondente
             const targetPage = document.querySelector(`#pages .${targetClass}`);
             if (targetPage) {
-                targetPage.style.display = 'block';
-                setTimeout(() => {
-                    targetPage.classList.remove('close');
-                    targetPage.classList.add('open');
-                    overlay.style.display = 'block';
-                    overlay.style.opacity = '1'; // Mostrar a sobreposição rapidamente
-                }, 10); // Pequeno delay para garantir a transição
+                targetPage.classList.remove('close');
+                targetPage.classList.add('open');
+                overlay.style.display = 'block';
+                overlay.style.opacity = '1'; // Mostrar a sobreposição rapidamente
             }
         }
 
+        /* Gestão dos Botões */
         mainButtonsDivs.forEach((button) => {
             button.addEventListener('click', () => {
                 const targetClass = button.classList[0];
@@ -235,6 +202,7 @@
             });
         });
 
+        /* Gestão das Labels */
         mainButtonsLabels.forEach((label) => {
             label.addEventListener('click', () => {
                 const targetClass = label.getAttribute('for');
@@ -242,6 +210,7 @@
             });
         });
 
+        /* Gestão dos Botões de Fechar */
         closeButtons.forEach((button) => {
             button.addEventListener('click', (event) => {
                 const page = event.target.closest('.about, .project, .experience, .formation, .faq, .contact');
@@ -259,6 +228,7 @@
             });
         });
 
+        /* Fechar a página ao clicar na sobreposição */
         overlay.addEventListener('click', () => {
             // Fechar a página aberta
             const openPage = document.querySelector('#pages > div.open');
@@ -272,6 +242,52 @@
                         overlay.style.display = 'none';
                     }, 200); // Tempo da transição da sobreposição
                 }, 500); // Tempo da animação da página
+            }
+        });
+
+        // Adiciona funcionalidade para copiar o email e exibir um balão de texto
+        document.addEventListener('DOMContentLoaded', () => {
+            const emailLink = document.querySelector('#pages .contact .content a');
+
+            if (emailLink) {
+                emailLink.addEventListener('click', (event) => {
+                    event.preventDefault(); // Evita abrir links externos
+
+                    // Copia o email para a área de transferência
+                    navigator.clipboard.writeText(emailLink.textContent).then(() => {
+                        // Cria o balão de texto
+                        const tooltip = document.createElement('span');
+                        tooltip.textContent = 'Copiado!';
+                        tooltip.style.position = 'absolute';
+                        tooltip.style.backgroundColor = '#333';
+                        tooltip.style.color = '#fff';
+                        tooltip.style.padding = '5px 10px';
+                        tooltip.style.borderRadius = '5px';
+                        tooltip.style.fontSize = '0.9rem';
+                        tooltip.style.top = `${event.clientY - 30}px`;
+                        tooltip.style.left = `${event.clientX}px`;
+                        tooltip.style.zIndex = '1000';
+                        tooltip.style.pointerEvents = 'none';
+
+                        document.body.appendChild(tooltip);
+
+                        // Remove o balão após 2 segundos
+                        setTimeout(() => {
+                            tooltip.remove();
+                        }, 1500);
+                    });
+                });
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const emailButton = document.querySelector('#pages .contact .content button');
+
+            if (emailButton) {
+                emailButton.addEventListener('click', () => {
+                    const email = 'l.filipecontact@gmail.com';
+                    window.location.href = `mailto:${email}`;
+                });
             }
         });
     </script>
