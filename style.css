@@ -32,6 +32,14 @@
     padding: 0;
 }
 
+h1 {
+    font-size: 1.4rem !important;
+}
+
+p {
+    font-size: 1rem !important;
+}
+
 body {
     font-family: var(--font-family);
     line-height: 1.6;
@@ -64,7 +72,7 @@ header .controlButtons {
 
 /* Ajustando o tamanho dos ícones no header */
 header i {
-    font-size: 2rem;
+    font-size: 1.5rem;
     /* Mesmo tamanho dos ícones na classe option */
     cursor: pointer;
     /* Adicionando cursor pointer aos ícones no header */
@@ -115,10 +123,6 @@ section#presentation {
     text-align: center;
 }
 
-section#presentation h1 {
-    font-size: 27px;
-}
-
 /* Estilizando o span dentro do h1 na seção presentation */
 section#presentation h1 span {
     text-decoration: underline;
@@ -164,7 +168,7 @@ section#mainButtons label:hover {
 
 /* Aumentando o tamanho dos ícones */
 section#mainButtons .option i {
-    font-size: 2.3rem;
+    font-size: 1.5rem;
     margin-bottom: 10px;
 }
 
@@ -186,7 +190,6 @@ footer a {
     color: var(--text-color);
     text-decoration: none;
     font-style: italic;
-    font-size: 15px;
     transition: color 0.3s ease;
 }
 
@@ -221,14 +224,11 @@ footer a:hover {
 }
 
 #pages .about .title h1 {
-    font-size: 1.5rem;
     color: var(--text-color);
 }
 
 /* Ajustando as cores do ícone na classe title para seguir o padrão */
 #pages .about .title i {
-    font-size: 2rem;
-    /* Mesmo tamanho dos ícones na classe option */
     color: var(--text-color);
     transition: color 0.3s ease;
 }
@@ -295,7 +295,6 @@ footer a:hover {
 #pages .formation .title h1,
 #pages .faq .title h1,
 #pages .contact .title h1 {
-    font-size: 1.5rem;
     color: var(--text-color);
 }
 
@@ -305,7 +304,6 @@ footer a:hover {
 #pages .formation .title i,
 #pages .faq .title i,
 #pages .contact .title i {
-    font-size: 2rem;
     /* Mesmo tamanho dos ícones na classe option */
     color: var(--text-color);
     transition: color 0.3s ease;
@@ -385,12 +383,11 @@ main {
 }
 
 #pages .title h1 {
-    font-size: 1.5rem;
     color: var(--text-color);
 }
 
 #pages .title i {
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: var(--text-color);
     transition: color 0.3s ease, transform 0.3s ease;
 }
@@ -414,9 +411,6 @@ main {
     padding: 20px;
     box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-
-/* Estilo para a página contact */
-#pages .contact .content {}
 
 .page {
     position: relative;
@@ -470,7 +464,6 @@ main {
     color: var(--primary-color);
     border-radius: 50%;
     margin: 25px auto;
-    font-size: 1.2rem;
 }
 
 #pages .about .content .description {
@@ -489,11 +482,16 @@ main {
 
 #pages .about .content .extra h1 {
     margin: 20px 0;
+    text-align: center;
 }
 
 #pages .about .content .extra ul {
     margin: 10px 15px 0 30px;
     line-height: 1.8;
+}
+
+#pages .about .content hr{
+    margin: 50px 0;
 }
 
 /* -------------------------------- */
@@ -502,7 +500,6 @@ main {
 
 #pages .formation .content {
     padding: 0 20px 250px 20px;
-
 }
 
 #pages .formation .content h1 {
@@ -513,17 +510,17 @@ main {
 /* Atualização para a div container na página formation */
 #pages .formation .container {
     display: grid;
-    grid-template-columns: 100px 1fr;
+    grid-template-columns: 75px 1fr;
     /* Define duas colunas iguais */
     grid-template-rows: 1fr;
     /* Apenas uma linha */
-    height: 150px;
-    margin: 25px 0 0 25px;
+    height: 120px;
+    margin: 25px 0 0 15px;
 }
 
 #pages .formation .container .img {
-    width: 75px;
-    height: 75px;
+    width: 50px;
+    height: 50px;
     border-radius: 5px;
     background-size: cover;
     grid-row: 1;
@@ -548,15 +545,12 @@ main {
 }
 
 #pages .formation .container .school p {
-    width: 100%;
-    height: 100%;
     text-align: start;
-}
+} 
 
 
 #pages .formation .content .school span {
     font-weight: bold;
-    font-size: 1.2rem;
 }
 
 #pages .formation .content hr{
@@ -602,12 +596,12 @@ main {
 #pages .contact .content button {
     width: 200px;
     height: 50px;
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin: 30px auto;
     background-color: var(--primary-color);
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     padding: 10px 20px;
     cursor: pointer;
     transition: background-color 0.3s ease;
