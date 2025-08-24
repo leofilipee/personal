@@ -416,8 +416,7 @@ main {
 }
 
 /* Estilo para a página contact */
-#pages .contact .content {
-}
+#pages .contact .content {}
 
 .page {
     position: relative;
@@ -450,15 +449,15 @@ main {
     transition: opacity 0.2s ease;
 }
 
-/* ------------------------------- */
+/* -------------------------------- */
 /* Estilo para a página about */
 /* -------------------------------- */
 
-#pages .about .content{
+#pages .about .content {
     padding: 0 20px 250px 20px;
 }
 
-#pages .about .content .pdp{
+#pages .about .content .pdp {
     width: 120px;
     height: 120px;
     background-color: var(--dark-primary-color);
@@ -467,39 +466,108 @@ main {
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.342);
 }
 
-#pages .about .content .name{
+#pages .about .content .name {
     color: var(--primary-color);
     border-radius: 50%;
     margin: 25px auto;
     font-size: 1.2rem;
 }
 
-#pages .about .content .description{
+#pages .about .content .description {
     text-align: center;
     margin-bottom: 25px;
     line-height: 1.8;
 }
 
-#pages .about .content .description hr{
+#pages .about .content .description hr {
     margin: 20px 0;
 }
 
-#pages .about .content .extra{
+#pages .about .content .extra {
     text-align: justify;
 }
 
-#pages .about .content .extra h1{
+#pages .about .content .extra h1 {
     margin: 20px 0;
 }
 
-#pages .about .content .extra ul{
+#pages .about .content .extra ul {
     margin: 10px 15px 0 30px;
     line-height: 1.8;
 }
 
+/* -------------------------------- */
+/* Estilo para a página formation */
+/* -------------------------------- */
 
-/* ------------------------------- */
-/* Estilo para a página contact 
+#pages .formation .content {
+    padding: 0 20px 250px 20px;
+
+}
+
+#pages .formation .content h1 {
+    margin-top: 50px;
+    text-decoration: underline
+}
+
+/* Atualização para a div container na página formation */
+#pages .formation .container {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    /* Define duas colunas iguais */
+    grid-template-rows: 1fr;
+    /* Apenas uma linha */
+    height: 150px;
+    margin: 25px 0 0 25px;
+}
+
+#pages .formation .container .img {
+    width: 75px;
+    height: 75px;
+    border-radius: 5px;
+    background-size: cover;
+    grid-row: 1;
+    /* Primeira e única linha */
+    grid-column: 1;
+    /* Fica na primeira coluna */
+}
+
+#pages .formation .container .img.first {
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6dRielCDQbQJ4SsSZlE-vjfZvLYSeeNSP5A&s');
+
+}
+
+#pages .formation .container .img.second {
+    background-image: url('https://media.licdn.com/dms/image/v2/D4E0BAQEBNiN7GcL1Jg/company-logo_200_200/company-logo_200_200/0/1692125362867/lyceegabrielfaure_logo?e=2147483647&v=beta&t=P2cpftUIgjyVSGhABUIOJyDTBLlQJsjZy-3vZGrUYhk');
+
+}
+
+#pages .formation .container .img.third {
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrpNYmTH7ls_4HJPzZ2_bIAsmDwR1BF6mVJiJTrqoat1tHKxurpTbrDsc3nxOGwdlG1T0&usqp=CAU');
+
+}
+
+#pages .formation .container .school p {
+    width: 100%;
+    height: 100%;
+    text-align: start;
+}
+
+
+#pages .formation .content .school span {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+#pages .formation .content hr{
+    margin: 50px 0;
+}
+
+
+
+
+/* -------------------------------- */
+/* Estilo para a página contact */
 /* -------------------------------- */
 
 #pages .contact .content h1 {
@@ -510,6 +578,7 @@ main {
     text-align: center;
     margin-bottom: 50px;
 }
+
 #pages .contact .content a {
     color: var(--primary-color);
     text-decoration: none;
