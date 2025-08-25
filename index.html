@@ -353,7 +353,7 @@
 
         closeButtons.forEach((button) => {
             button.addEventListener('click', (event) => {
-                playClickSound(clickSound); // Usa a função centralizada para tocar o som
+                playClickSound(closeSound); // Usa o som específico para os botões de fechar
                 const page = event.target.closest('.about, .project, .experience, .formation, .faq, .contact'); // Seleciona a página correspondente ao botão
                 if (page) {
                     page.classList.remove('open');
@@ -397,7 +397,7 @@
         const openButtons = document.querySelectorAll('.option');
         openButtons.forEach((button) => {
             button.addEventListener('mouseup', () => {
-                playClickSound(clickSound); // Usa a função centralizada para tocar o som
+                playClickSound(openSound); // Usa o som específico para os botões de abrir
                 const targetClass = button.classList[0];
                 openPage(targetClass);
             });
