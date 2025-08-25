@@ -30,24 +30,24 @@
                 <p>Desenvolvedor web front-end</p>
             </section>
             <section id="mainButtons">
-                <div class="option">
-                    <div class="about"><i class="fa-solid fa-user"></i></div>
+                <div class="option about" onclick="openPage('about')">
+                    <i class="fa-solid fa-user"></i>
                     <label for="about">Sobre</label>
                 </div>
-                <div class="option">
-                    <div class="project"><i class="fa-solid fa-folder-open"></i></div>
+                <div class="option project" onclick="openPage('project')">
+                    <i class="fa-solid fa-folder-open"></i>
                     <label for="project">Projetos</label>
                 </div>
-                <div class="option">
-                    <div class="experience"><i class="fa-solid fa-briefcase"></i></div>
+                <div class="option experience" onclick="openPage('experience')">
+                    <i class="fa-solid fa-briefcase"></i>
                     <label for="experience">Experiência</label>
                 </div>
-                <div class="option">
-                    <div class="formation"><i class="fa-solid fa-school"></i></div>
+                <div class="option formation" onclick="openPage('formation')">
+                    <i class="fa-solid fa-school"></i>
                     <label for="formation">Formação</label>
                 </div>
-                <div class="option">
-                    <div class="faq"><i class="fa-solid fa-question"></i></div>
+                <div class="option faq" onclick="openPage('faq')">
+                    <i class="fa-solid fa-question"></i>
                     <label for="faq">FAQ</label>
                 </div>
                 <div class="option">
@@ -111,7 +111,7 @@
                         <h1>Projetos</h1>
                         <i class="closeButton fa-solid fa-circle-xmark"></i>
                     </div>
-                    <div class="content">Informações sobre mim.</div>
+                    <div class="content">Informações por adicionar...</div>
                 </div>
 
                 <div class="experience page">
@@ -286,12 +286,12 @@
                     </div>
                 </div>
 
-                <!-- <div class="faq page">
+                <div class="faq page">
                     <div class="title">
                         <h1>FAQ</h1>
                         <i class="closeButton fa-solid fa-circle-xmark"></i>
                     </div>
-                    <div class="content">Informações sobre mim.</div>
+                    <div class="content">Informações por adicionar...</div>
                 </div>
 
                 <div class="contact page">
@@ -306,7 +306,7 @@
                         <div class="email-draw"></div>
                         <button>Enviar Email</button>
                     </div>
-                </div> -->
+                </div>
 
             </section>
         </div>
@@ -320,10 +320,13 @@
     <script>
 
         /* Gestão do Modo Escuro/Claro */
+        const clickSound = new Audio('audio/click-in.wav');
         const darkLightModeButton = document.querySelector('#darkLightMode i');
         const root = document.documentElement;
 
         darkLightModeButton.addEventListener('click', () => {
+            playClickSound(clickSound); // Usa a função centralizada para tocar o som
+
             if (darkLightModeButton.classList.contains('fa-sun')) {
                 // Alterar para o modo Light
                 darkLightModeButton.classList.remove('fa-sun');
@@ -345,10 +348,12 @@
 
 
         /* Botões de Fechar */
+        const closeSound = new Audio('audio/click-out.wav');
         const closeButtons = document.querySelectorAll('.closeButton');
 
         closeButtons.forEach((button) => {
             button.addEventListener('click', (event) => {
+                playClickSound(clickSound); // Usa a função centralizada para tocar o som
                 const page = event.target.closest('.about, .project, .experience, .formation, .faq, .contact'); // Seleciona a página correspondente ao botão
                 if (page) {
                     page.classList.remove('open');
@@ -388,8 +393,11 @@
         }
 
         /* Gestão dos Botões */
-        mainButtonsDivs.forEach((button) => {
-            button.addEventListener('click', () => {
+        const openSound = new Audio('audio/click-in.wav');
+        const openButtons = document.querySelectorAll('.option');
+        openButtons.forEach((button) => {
+            button.addEventListener('mouseup', () => {
+                playClickSound(clickSound); // Usa a função centralizada para tocar o som
                 const targetClass = button.classList[0];
                 openPage(targetClass);
             });
@@ -480,6 +488,47 @@
                 });
             }
         });
+
+        
+        const soundToggleButton = document.querySelector('#soundOnOff i');
+        let isMuted = false; // Estado inicial do som
+
+        // Função central para verificar o estado do som
+        function updateAudioState() {
+            const allAudios = document.querySelectorAll('audio');
+            allAudios.forEach(audio => {
+                audio.muted = isMuted;
+            });
+        }
+
+        soundToggleButton.addEventListener('click', () => {
+            if (soundToggleButton.classList.contains('fa-volume-high')) {
+                // Mute os sons
+                soundToggleButton.classList.remove('fa-volume-high');
+                soundToggleButton.classList.add('fa-volume-xmark');
+                isMuted = true;
+            } else {
+                // Ative os sons
+                soundToggleButton.classList.remove('fa-volume-xmark');
+                soundToggleButton.classList.add('fa-volume-high');
+                isMuted = false;
+
+                // Toca o som ao ativar o áudio
+                const toggleSound = new Audio('audio/click-in.wav');
+                playClickSound(toggleSound);
+            }
+
+            // Atualize o estado de todos os áudios
+            updateAudioState();
+        });
+
+        // Exemplo de uso da função central em outros eventos
+        function playClickSound(audioElement) {
+            if (!isMuted) {
+                audioElement.currentTime = 0;
+                audioElement.play();
+            }
+        }
     </script>
 
 </body>

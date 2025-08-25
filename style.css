@@ -151,7 +151,6 @@ section#mainButtons {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, auto);
-    gap: 20px 30px;
     justify-content: center;
     align-items: center;
 }
@@ -163,6 +162,10 @@ section#mainButtons .option {
     text-align: center;
     transition: color 0.3s ease;
     color: var(--text-color);
+    cursor: pointer; /* Garante que toda a área seja clicável */
+    padding: 20px; /* Adiciona espaçamento interno para aumentar a área clicável */
+    width: 100%; /* Garante que o botão ocupe toda a largura disponível */
+    height: 100%; /* Garante que o botão ocupe toda a altura disponível */
 }
 
 section#mainButtons .option:hover {
@@ -661,4 +664,8 @@ main {
 
 #pages .contact .content button:active {
     background-color: #C0654F;
+}
+
+#pages .closeButton {
+    cursor: pointer !important; /* Garante que o cursor seja exibido como pointer */
 }
