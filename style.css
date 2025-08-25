@@ -409,7 +409,7 @@ main {
 /* ------------------------------ */
 
 #pages .about .content {
-    padding: 0 20px 250px 20px;
+    padding: 0 30px 250px 30px;
 }
 
 #pages .about .content .pdp {
@@ -460,7 +460,7 @@ main {
 /* ------------------------------ */
 
 #pages .experience .content {
-    padding: 0 20px 250px 20px;
+    padding: 0 30px 250px 30px;
 }
 
 #pages .experience .content h1 {
@@ -492,17 +492,46 @@ main {
 
 #pages .experience .container .img.first {
     background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6dRielCDQbQJ4SsSZlE-vjfZvLYSeeNSP5A&s');
+}
 
+#pages .experience .container .img.first {
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6dRielCDQbQJ4SsSZlE-vjfZvLYSeeNSP5A&s');
+}
+
+#pages .experience .container .img.first {
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6dRielCDQbQJ4SsSZlE-vjfZvLYSeeNSP5A&s');
+}
+
+#pages .experience .container .img.first {
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6dRielCDQbQJ4SsSZlE-vjfZvLYSeeNSP5A&s');
+}
+
+#pages .experience .container .img.tmc {
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTm4aIHIdcRqBQsstDG-sppu9ljtdd44oLqoQ&s');
+}
+
+#pages .experience .container .img.htg {
+    background-image: url('https://hashtaginformatique.fr/assets/img/logo.png');
+}
+
+#pages .experience .container .img.irto {
+    background-image: url('https://media.licdn.com/dms/image/v2/C4E0BAQGF1FzL_4tpug/company-logo_100_100/company-logo_100_100/0/1630638772548?e=1758758400&v=beta&t=GYCbJ2ZpyLeAQpKwI6OFWBzP3G0JJG9mVVl3Ri21jt4');
+}
+
+#pages .experience .container .img.edf {
+    background-image: url('https://media.licdn.com/dms/image/v2/D4E0BAQGJ5iv880eA7w/company-logo_100_100/B4EZVC6RsuGgAQ-/0/1740584329424/edf_logo?e=1758758400&v=beta&t=ejPBQPogGTjsVKh_E_7hR_mMsWZpjjZWfK2qNbib9ec');
+}
+
+#pages .experience .container .img.gcsn {
+    background-image: url('https://media.licdn.com/dms/image/v2/D4E0BAQEX_TIBsem8Uw/company-logo_100_100/company-logo_100_100/0/1736952138852/groupe_casino_logo?e=1758758400&v=beta&t=E-Fu6nYLVrJksrxmqZRDk36RRoL6TlmXbYxCq6TG7sg');
 }
 
 #pages .experience .container .img.vtf {
     background-image: url('https://media.licdn.com/dms/image/v2/C4E0BAQEZzSxK75bpQg/company-logo_100_100/company-logo_100_100/0/1669108402228/vtfvacances_logo?e=1758758400&v=beta&t=OW59rCGKhiQLAiGI31rX7XPQFQ8J2T9Z47gr7ioXCwU');
-
 }
 
 #pages .experience .container .img.carmkt {
     background-image: url('https://media.licdn.com/dms/image/v2/D4E0BAQGkgl1BwGXNbA/company-logo_100_100/B4EZfUzGjEG4AU-/0/1751621855979/carrefour_logo?e=1758758400&v=beta&t=HB0cSHtJhmDSgmVvwaB_M4uMrwZyxfejUJyC2O-M1G4');
-
 }
 
 #pages .experience .container .instit p {
@@ -523,7 +552,7 @@ main {
 /* ------------------------------ */
 
 #pages .formation .content {
-    padding: 0 20px 250px 20px;
+    padding: 0 30px 250px 30px;
 }
 
 #pages .formation .content h1 {
