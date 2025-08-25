@@ -58,7 +58,7 @@
 
             <section id="pages">
 
-                <div class="about page">
+                <!-- <div class="about page">
                     <div class="title">
                         <h1>Sobre</h1>
                         <i class="closeButton fa-solid fa-circle-xmark"></i>
@@ -77,7 +77,7 @@
 
                         </div>
 
-                            <hr>
+                        <hr>
 
                         <div class="extra">
 
@@ -88,7 +88,7 @@
                                 <li>Música (canto, composição, guitarra, piano, violino)</li>
                                 <li>Leitura (desenvolvimento pessoal e educação financeira)</li>
                             </ul>
-                            
+
                             <hr>
 
                             <h1>Cultura</h1>
@@ -104,7 +104,7 @@
                         </div>
 
                     </div>
-                </div>
+                </div> -->
 
                 <!-- <div class="project page">
                     <div class="title">
@@ -112,19 +112,51 @@
                         <i class="closeButton fa-solid fa-circle-xmark"></i>
                     </div>
                     <div class="content">Informações sobre mim.</div>
-                </div>
+                </div> -->
 
                 <div class="experience page">
                     <div class="title">
                         <h1>Experiência</h1>
                         <i class="closeButton fa-solid fa-circle-xmark"></i>
                     </div>
-                    <div class="content">Informações sobre mim.</div>
+                    <div class="content">
+                        <h1>Área Informática</h1>
+
+                        <div class="container">
+                            <div class="img first"></div>
+                            <div class="instit">
+                                <p><span>IADE - Creative University</span></p>
+                                <p>Licenciatura, Informática</p>
+                                <p>Set 2024 - Em curso</p>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <h1>Áreas Gerais</h1>
+
+                        <div class="container">
+                            <div class="img vtf"></div>
+                            <div class="instit">
+                                <p><span>VTF Vacances</span></p>
+                                <p>Dishwasher &bull; Trabalho</p>
+                                <p>Jul 2023 - Ago 2023</p>
+                            </div>
+                        </div>
+
+                        <div class="container">
+                            <div class="img carmkt"></div>
+                            <div class="instit">
+                                <p><span>Carrefour Market</span></p>
+                                <p>Auxiliar de Supermercado &bull; Estágio</p>
+                                <p>Jul 2020 - Ago 2020</p>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
 
-            -->
-
-                <div class="formation page">
+                <!-- <div class="formation page">
                     <div class="title">
                         <h1>Formação</h1>
                         <i class="closeButton fa-solid fa-circle-xmark"></i>
@@ -133,8 +165,8 @@
                         <h1>Ensino Superior</h1>
 
                         <div class="container">
-                            <div class="img first"></div>
-                            <div class="school">
+                            <div class="img iade"></div>
+                            <div class="instit">
                                 <p><span>IADE - Creative University</span></p>
                                 <p>Licenciatura, Informática</p>
                                 <p>Set 2024 - Em curso</p>
@@ -142,8 +174,8 @@
                         </div>
 
                         <div class="container">
-                            <div class="img second"></div>
-                            <div class="school">
+                            <div class="img lgf"></div>
+                            <div class="instit">
                                 <p><span>Lycée Gabriel Fauré</span></p>
                                 <p>BTS, Services Informatiques aux Organisations</p>
                                 <p>Set 2023 - Jul 2024</p>
@@ -155,17 +187,17 @@
                         <h1>Ensino Secundário</h1>
 
                         <div class="container">
-                            <div class="img third"></div>
-                            <div class="school">
+                            <div class="img lph"></div>
+                            <div class="instit">
                                 <p><span>Lycée Pault Héroult</span></p>
                                 <p>Bac Pro, Systèmes Numériques</p>
                                 <p>Set 2020 - Jul 2023</p>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
-                
+
                 <!-- <div class="faq page">
                     <div class="title">
                         <h1>FAQ</h1>
@@ -180,18 +212,15 @@
                         <i class="closeButton fa-solid fa-circle-xmark"></i>
                     </div>
                     <div class="content">
-
                         <h1>Envia-me um email!</h1>
-
-                        <p>Se quiser entrar em contacto comigo, por favor manda-me um email para: <a href="mailto:l.filipecontact@gmail.com">l.filipecontact@gmail.com</a>.</p>
-
+                        <p>Se quiser entrar em contacto comigo, por favor manda-me um email para: <a
+                                href="mailto:l.filipecontact@gmail.com">l.filipecontact@gmail.com</a>.</p>
                         <div class="email-draw"></div>
-
                         <button>Enviar Email</button>
-
                     </div>
-        </div>
-        </section>
+                </div>
+
+            </section>
         </div>
 
     </main>
@@ -321,48 +350,45 @@
             }
         });
 
-        // Adiciona funcionalidade para copiar o email e exibir um balão de texto
         document.addEventListener('DOMContentLoaded', () => {
-            const emailLink = document.querySelector('#pages .contact .content a');
+            const emailLinkElement = document.querySelector('#pages .contact .content a');
 
-            if (emailLink) {
-                emailLink.addEventListener('click', (event) => {
+            if (emailLinkElement) {
+                emailLinkElement.addEventListener('click', (event) => {
                     event.preventDefault(); // Evita abrir links externos
 
                     // Copia o email para a área de transferência
-                    navigator.clipboard.writeText(emailLink.textContent).then(() => {
+                    navigator.clipboard.writeText(emailLinkElement.textContent).then(() => {
                         // Cria o balão de texto
-                        const tooltip = document.createElement('span');
-                        tooltip.textContent = 'Copiado!';
-                        tooltip.style.position = 'absolute';
-                        tooltip.style.backgroundColor = '#333';
-                        tooltip.style.color = '#fff';
-                        tooltip.style.padding = '5px 10px';
-                        tooltip.style.borderRadius = '5px';
-                        tooltip.style.fontSize = '0.9rem';
-                        tooltip.style.top = `${event.clientY - 50}px`;
-                        tooltip.style.left = `${event.clientX - 30}px`;
-                        tooltip.style.zIndex = '1000';
-                        tooltip.style.pointerEvents = 'none';
+                        const tooltipElement = document.createElement('span');
+                        tooltipElement.textContent = 'Copiado!';
+                        tooltipElement.style.position = 'absolute';
+                        tooltipElement.style.backgroundColor = '#333';
+                        tooltipElement.style.color = '#fff';
+                        tooltipElement.style.padding = '5px 10px';
+                        tooltipElement.style.borderRadius = '5px';
+                        tooltipElement.style.fontSize = '0.9rem';
+                        tooltipElement.style.top = `${event.clientY - 50}px`;
+                        tooltipElement.style.left = `${event.clientX - 30}px`;
+                        tooltipElement.style.zIndex = '1000';
+                        tooltipElement.style.pointerEvents = 'none';
 
-                        document.body.appendChild(tooltip);
+                        document.body.appendChild(tooltipElement);
 
                         // Remove o balão após 2 segundos
                         setTimeout(() => {
-                            tooltip.remove();
+                            tooltipElement.remove();
                         }, 1500);
                     });
                 });
             }
-        });
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const emailButton = document.querySelector('#pages .contact .content button');
+            const emailButtonElement = document.querySelector('#pages .contact .content button');
 
-            if (emailButton) {
-                emailButton.addEventListener('click', () => {
-                    const email = 'l.filipecontact@gmail.com';
-                    window.location.href = `mailto:${email}`;
+            if (emailButtonElement) {
+                emailButtonElement.addEventListener('click', () => {
+                    const emailAddress = 'l.filipecontact@gmail.com';
+                    window.location.href = `mailto:${emailAddress}`;
                 });
             }
         });

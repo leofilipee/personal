@@ -1,19 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-/* Melhorias gerais */
+/* ------------------------------ */
+/* Root Variables */
+/* ------------------------------ */
 :root {
     --header-height: 40px;
     /* Define a altura do cabeçalho, ajuste conforme necessário */
 
     /* DarkMode Colors */
-    --dark-primary-color: #FF3C3C;
-    --dark-secondary-color: #b62828;
+    --dark-primary-color: #F38064;
+    --dark-secondary-color: #D47057;
     --dark-background-color: #222222;
     --dark-text-color: #ffffff;
 
     /* LightMode Colors */
-    --light-primary-color: #FF3C3C;
-    --light-secondary-color: #b62828;
+    --light-primary-color: #F38064;
+    --light-secondary-color: #D47057;
     --light-background-color: #ffffff;
     --light-text-color: #222222;
 
@@ -23,9 +25,17 @@
     --background-color: var(--dark-background-color);
     --text-color: var(--dark-text-color);
     --primary-color: var(--dark-primary-color);
-    --secondary-color: var(--dark-secondary-color);
 }
 
+body.light-mode {
+    --background-color: var(--light-background-color);
+    --text-color: var(--light-text-color);
+    --primary-color: var(--light-primary-color);
+}
+
+/* ------------------------------ */
+/* Body and General Elements */
+/* ------------------------------ */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -60,6 +70,9 @@ body {
     /* Usa dynamic viewport height para evitar exceder a barra de navegação */
 }
 
+/* ------------------------------ */
+/* Header */
+/* ------------------------------ */
 header {
     margin: 20px;
 }
@@ -83,7 +96,7 @@ header i {
 /* Adicionando animações de hover e active aos ícones no header */
 header i:hover {
     color: var(--dark-primary-color);
-    transform: scale(1.1);
+    transform: scale(1.2);
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
@@ -93,6 +106,9 @@ header i:active {
     transition: transform 0.2s ease, color 0.2s ease;
 }
 
+/* ------------------------------ */
+/* Main Section */
+/* ------------------------------ */
 main {
     max-width: 800px;
     margin: 20px auto;
@@ -151,7 +167,7 @@ section#mainButtons .option {
 
 section#mainButtons .option:hover {
     color: var(--primary-color);
-    transform: scale(1.1);
+    transform: scale(1.2);
     transition: transform 0.3s ease;
     cursor: pointer;
 }
@@ -172,7 +188,9 @@ section#mainButtons .option i {
     margin-bottom: 10px;
 }
 
-
+/* ------------------------------ */
+/* Footer */
+/* ------------------------------ */
 footer {
     display: flex;
     justify-content: center;
@@ -197,66 +215,9 @@ footer a:hover {
     text-decoration: underline;
 }
 
-/* Estilo para a página about */
-#pages .about {
-    display: block;
-    /* Visível inicialmente para edição */
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 95vh;
-    background-color: var(--background-color);
-    color: var(--text-color);
-    z-index: 1000;
-    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
-}
-
-/* Estilo para a classe title dentro da página about */
-#pages .about .title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    margin: 10px 25px;
-}
-
-#pages .about .title h1 {
-    color: var(--text-color);
-}
-
-/* Ajustando as cores do ícone na classe title para seguir o padrão */
-#pages .about .title i {
-    color: var(--text-color);
-    transition: color 0.3s ease;
-}
-
-#pages .about .title i:hover {
-    color: var(--primary-color);
-    transform: scale(1.1);
-    transition: transform 0.3s ease;
-}
-
-#pages .about .title i:active {
-    color: var(--secondary-color);
-    transform: scale(0.95);
-    transition: transform 0.1s ease;
-}
-
-/* Estilo para a classe content dentro da página about */
-#pages .about .content {
-    background-color: var(--light-background-color);
-    color: var(--light-text-color);
-    height: calc(100% - 90px);
-    /* Subtraindo o espaço ocupado pela classe title */
-    overflow-y: auto;
-    padding: 20px;
-    box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Estilo para as páginas project, experience, formation, faq e contact */
+/* ------------------------------ */
+/* Pages */
+/* ------------------------------ */
 #pages .project,
 #pages .experience,
 #pages .formation,
@@ -305,6 +266,7 @@ footer a:hover {
 #pages .faq .title i,
 #pages .contact .title i {
     /* Mesmo tamanho dos ícones na classe option */
+    cursor: pointer;
     color: var(--text-color);
     transition: color 0.3s ease;
 }
@@ -315,7 +277,7 @@ footer a:hover {
 #pages .faq .title i:hover,
 #pages .contact .title i:hover {
     color: var(--primary-color);
-    transform: scale(1.1);
+    transform: scale(1.2);
     transition: transform 0.3s ease;
 }
 
@@ -394,7 +356,7 @@ main {
 
 #pages .title i:hover {
     color: var(--primary-color);
-    transform: scale(1.1);
+    transform: scale(1.2);
 }
 
 #pages .title i:active {
@@ -404,8 +366,7 @@ main {
 }
 
 #pages .content {
-    background-color: var(--light-background-color);
-    color: var(--light-text-color);
+    color: var(--text-color);
     height: calc(100% - 90px);
     overflow-y: auto;
     padding: 20px;
@@ -416,7 +377,7 @@ main {
     position: relative;
     /* transform: translateY(100%); */
     opacity: 0;
-    transition: transform 0.5s ease, opacity 0.5s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .page.open {
@@ -443,9 +404,9 @@ main {
     transition: opacity 0.2s ease;
 }
 
-/* -------------------------------- */
+/* ------------------------------ */
 /* Estilo para a página about */
-/* -------------------------------- */
+/* ------------------------------ */
 
 #pages .about .content {
     padding: 0 20px 250px 20px;
@@ -490,20 +451,83 @@ main {
     line-height: 1.8;
 }
 
-#pages .about .content hr{
+#pages .about .content hr {
     margin: 50px 0;
 }
 
-/* -------------------------------- */
+/* ------------------------------ */
+/* Estilo para a página experience */
+/* ------------------------------ */
+
+#pages .experience .content {
+    padding: 0 20px 250px 20px;
+}
+
+#pages .experience .content h1 {
+    margin-top: 50px;
+    text-decoration: underline
+}
+
+/* Atualização para a div container na página formation */
+#pages .experience .container {
+    display: grid;
+    grid-template-columns: 75px 1fr;
+    /* Define duas colunas iguais */
+    grid-template-rows: 1fr;
+    /* Apenas uma linha */
+    height: 120px;
+    margin: 25px 0 0 15px;
+}
+
+#pages .experience .container .img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    background-size: cover;
+    grid-row: 1;
+    /* Primeira e única linha */
+    grid-column: 1;
+    /* Fica na primeira coluna */
+}
+
+#pages .experience .container .img.first {
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6dRielCDQbQJ4SsSZlE-vjfZvLYSeeNSP5A&s');
+
+}
+
+#pages .experience .container .img.vtf {
+    background-image: url('https://media.licdn.com/dms/image/v2/C4E0BAQEZzSxK75bpQg/company-logo_100_100/company-logo_100_100/0/1669108402228/vtfvacances_logo?e=1758758400&v=beta&t=OW59rCGKhiQLAiGI31rX7XPQFQ8J2T9Z47gr7ioXCwU');
+
+}
+
+#pages .experience .container .img.carmkt {
+    background-image: url('https://media.licdn.com/dms/image/v2/D4E0BAQGkgl1BwGXNbA/company-logo_100_100/B4EZfUzGjEG4AU-/0/1751621855979/carrefour_logo?e=1758758400&v=beta&t=HB0cSHtJhmDSgmVvwaB_M4uMrwZyxfejUJyC2O-M1G4');
+
+}
+
+#pages .experience .container .instit p {
+    text-align: start;
+}
+
+
+#pages .experience .content .instit span {
+    font-weight: bold;
+}
+
+#pages .experience .content hr {
+    margin: 50px 0;
+}
+
+/* ------------------------------ */
 /* Estilo para a página formation */
-/* -------------------------------- */
+/* ------------------------------ */
 
 #pages .formation .content {
     padding: 0 20px 250px 20px;
 }
 
 #pages .formation .content h1 {
-    margin-top: 50px;
+    margin: 50px;
     text-decoration: underline
 }
 
@@ -529,88 +553,78 @@ main {
     /* Fica na primeira coluna */
 }
 
-#pages .formation .container .img.first {
+#pages .formation .container .img.iade {
     background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6dRielCDQbQJ4SsSZlE-vjfZvLYSeeNSP5A&s');
 
 }
 
-#pages .formation .container .img.second {
+#pages .formation .container .img.lgf {
     background-image: url('https://media.licdn.com/dms/image/v2/D4E0BAQEBNiN7GcL1Jg/company-logo_200_200/company-logo_200_200/0/1692125362867/lyceegabrielfaure_logo?e=2147483647&v=beta&t=P2cpftUIgjyVSGhABUIOJyDTBLlQJsjZy-3vZGrUYhk');
 
 }
 
-#pages .formation .container .img.third {
+#pages .formation .container .img.lph {
     background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrpNYmTH7ls_4HJPzZ2_bIAsmDwR1BF6mVJiJTrqoat1tHKxurpTbrDsc3nxOGwdlG1T0&usqp=CAU');
 
 }
 
-#pages .formation .container .school p {
+#pages .formation .container .instit p {
     text-align: start;
-} 
+}
 
 
-#pages .formation .content .school span {
+#pages .formation .content .instit span {
     font-weight: bold;
 }
 
-#pages .formation .content hr{
+#pages .formation .content hr {
     margin: 50px 0;
 }
 
-
-
-
-/* -------------------------------- */
+/* ------------------------------ */
 /* Estilo para a página contact */
-/* -------------------------------- */
+/* ------------------------------ */
 
-#pages .contact .content h1 {
-    margin: 20px;
+#pages .contact .content {
+    padding: 0 30px 250px 30px;
 }
 
-#pages .contact .content p {
-    text-align: center;
-    margin-bottom: 50px;
+#pages .contact .content h1 {
+    margin: 50px;
+    text-decoration: underline
 }
 
 #pages .contact .content a {
-    color: var(--primary-color);
+    color: var(--dark-primary-color);
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 #pages .contact .content a:hover {
-    color: var(--secondary-color);
-}
-
-#pages .contact .content a:active {
-    color: var(--tertiary-color);
+    color: var(--dark-secondary-color);
 }
 
 #pages .contact .content .email-draw {
-    margin: 20px auto;
+    background-color: white;
     width: 100px;
     height: 100px;
-    background-color: var(--primary-color);
+    margin: 50px auto;
 }
 
 #pages .contact .content button {
-    width: 200px;
-    height: 50px;
-    font-size: 1rem;
-    margin: 30px auto;
-    background-color: var(--primary-color);
-    color: white;
+    background-color: var(--dark-primary-color);
+    color: #fff;
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 10px 20px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 #pages .contact .content button:hover {
-    background-color: var(--secondary-color);
+    background-color: var(--dark-secondary-color);
 }
 
 #pages .contact .content button:active {
-    background-color: #681a1a;
+    background-color: #C0654F;
 }
