@@ -53,7 +53,6 @@ p {
 body {
     font-family: var(--font-family);
     line-height: 1.6;
-    padding: 15px;
     background-color: var(--background-color);
     color: var(--text-color);
     overflow: hidden;
@@ -75,6 +74,7 @@ body {
 /* ------------------------------ */
 header {
     margin: 20px;
+    padding: 15px 15px 0 0;
 }
 
 header .controlButtons {
@@ -196,12 +196,17 @@ footer {
     justify-content: center;
     align-items: center;
     position: fixed;
-    bottom: 0;
     width: 100%;
+    bottom: 0;
     background-color: var(--background-color);
     padding: 10px 0;
     color: var(--text-color);
     transition: background-color 0.3s ease, color 0.3s ease;
+
+}
+
+footer p {
+    margin: 0;
 }
 
 footer a {
@@ -490,16 +495,16 @@ main {
     /* Fica na primeira coluna */
 }
 
-#pages .experience .container .img.first {
-    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6dRielCDQbQJ4SsSZlE-vjfZvLYSeeNSP5A&s');
+#pages .experience .container .img.fr {
+    width: 10px;
+    height: 10px;
+    background-color: #F38064;
 }
 
-#pages .experience .container .img.first {
-    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6dRielCDQbQJ4SsSZlE-vjfZvLYSeeNSP5A&s');
-}
 
-#pages .experience .container .img.first {
-    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6dRielCDQbQJ4SsSZlE-vjfZvLYSeeNSP5A&s');
+#pages .container img {
+    width: 1.5rem;
+    height: 1.5rem;
 }
 
 #pages .experience .container .img.first {
