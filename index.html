@@ -616,6 +616,13 @@
                 event.preventDefault(); // Desativa o pull-to-refresh quando uma página está aberta
             }
         }, { passive: false });
+
+        document.addEventListener('touchstart', (event) => {
+            const openPage = document.querySelector('#pages > div.open');
+            if (openPage) {
+                event.preventDefault(); // Garante que o evento de toque tenha prioridade sobre o pull-to-refresh
+            }
+        }, { passive: false });
     </script>
 
 </body>
