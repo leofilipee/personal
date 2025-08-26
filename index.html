@@ -530,10 +530,18 @@
             }
         }
 
-        // Adiciona evento de scroll na classe title
+        // Adiciona evento de deslize para dispositivos móveis na classe title
         document.querySelectorAll('.page .title').forEach((title) => {
-            title.addEventListener('wheel', (event) => {
-                if (event.deltaY < 0) { // Verifica se o scroll é para cima
+            let touchStartY = 0;
+            let touchEndY = 0;
+
+            title.addEventListener('touchstart', (event) => {
+                touchStartY = event.changedTouches[0].clientY;
+            });
+
+            title.addEventListener('touchend', (event) => {
+                touchEndY = event.changedTouches[0].clientY;
+                if (touchStartY - touchEndY > 50) { // Verifica se o deslize foi para cima
                     const page = title.closest('.page');
                     if (page) {
                         const closeButton = page.querySelector('.closeButton');
