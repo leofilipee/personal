@@ -593,11 +593,18 @@
             const deltaY = currentY - startY;
             const pageHeight = page.offsetHeight;
 
-            if (deltaY > pageHeight * 0.2) { // Verifica se o movimento foi maior que 20% da altura
+            if (deltaY > pageHeight * 0.3) { // Verifica se o movimento foi maior que 30% da altura
                 const closeButton = page.querySelector('.closeButton');
                 if (closeButton) {
                     closeButton.click(); // Aciona o botão de fechar
                 }
+
+                // Reseta os valores da página
+                setTimeout(() => {
+                    page.style.transition = '';
+                    page.style.transform = '';
+                    page.style.display = '';
+                }, 500); // Tempo para garantir que a animação de fechamento termine
             } else {
                 page.style.transition = 'transform 0.3s ease'; // Adiciona transição para voltar suavemente
                 page.style.transform = 'translateY(0)'; // Retorna à posição original
