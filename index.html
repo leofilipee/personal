@@ -612,8 +612,10 @@
 
     document.addEventListener('touchmove', (event) => {
             const openPage = document.querySelector('#pages > div.open');
-            if (openPage) {
-                event.preventDefault(); // Desativa o pull-to-refresh quando uma página está aberta
+            const isTitle = event.target.closest('.title'); // Verifica se o deslize é no título
+
+            if (openPage && !isTitle) {
+                event.preventDefault(); // Desativa o pull-to-refresh apenas se não for no título
             }
         }, { passive: false });
     </script>
