@@ -600,13 +600,11 @@
                 }
 
                 // Reseta os valores da página
-                setTimeout(() => {
-                    page.style.transition = '';
-                    page.style.transform = '';
-                    page.style.display = '';
-                }, 500); // Tempo para garantir que a animação de fechamento termine
+                page.style.transition = '';
+                page.style.transform = '';
+                page.style.display = '';
             } else {
-                page.style.transition = 'transform 0.3s ease'; // Adiciona transição para voltar suavemente
+                page.style.transition = 'transform 0.1s ease'; // Reduz o tempo de transição para maior responsividade
                 page.style.transform = 'translateY(0)'; // Retorna à posição original
             }
         });
