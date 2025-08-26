@@ -529,6 +529,21 @@
                 audioElement.play();
             }
         }
+
+        // Adiciona evento de scroll na classe title
+        document.querySelectorAll('.page .title').forEach((title) => {
+            title.addEventListener('wheel', (event) => {
+                if (event.deltaY < 0) { // Verifica se o scroll é para cima
+                    const page = title.closest('.page');
+                    if (page) {
+                        const closeButton = page.querySelector('.closeButton');
+                        if (closeButton) {
+                            closeButton.click(); // Aciona o botão de fechar
+                        }
+                    }
+                }
+            });
+        });
     </script>
 
 </body>
