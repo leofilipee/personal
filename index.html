@@ -609,6 +609,13 @@
             }
         });
     });
+
+    document.addEventListener('touchmove', (event) => {
+            const openPage = document.querySelector('#pages > div.open');
+            if (openPage) {
+                event.preventDefault(); // Desativa o pull-to-refresh quando uma página está aberta
+            }
+        }, { passive: false });
     </script>
 
 </body>
