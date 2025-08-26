@@ -613,7 +613,9 @@
     document.addEventListener('touchmove', (event) => {
             const openPage = document.querySelector('#pages > div.open');
             if (openPage) {
-                event.preventDefault(); // Desativa o pull-to-refresh quando uma página está aberta
+                if (event.touches[0].clientY > 0) {
+                    event.preventDefault(); // Bloqueia o pull-to-refresh ao detectar movimento para baixo
+                }
             }
         }, { passive: false });
 
