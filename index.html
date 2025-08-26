@@ -567,41 +567,40 @@
             button.addEventListener('click', playCloseSound);
         });
 
-        document.querySelectorAll('.page .title').forEach((title) => {
+        document.querySelectorAll('.page').forEach((page) => {
         let isDragging = false;
         let startY = 0;
         let currentY = 0;
 
+        const title = page.querySelector('.title');
+
         title.addEventListener('touchstart', (event) => {
             isDragging = true;
             startY = event.touches[0].clientY;
-            title.style.transition = 'none'; // Remove transições para suavizar o movimento
+            page.style.transition = 'none'; // Remove transições para suavizar o movimento
         });
 
         title.addEventListener('touchmove', (event) => {
             if (isDragging) {
                 currentY = event.touches[0].clientY;
                 const deltaY = currentY - startY;
-                title.style.transform = `translateY(${deltaY}px)`; // Move o título com o dedo
+                page.style.transform = `translateY(${deltaY}px)`; // Move a página com o dedo
             }
         });
 
         title.addEventListener('touchend', () => {
             isDragging = false;
             const deltaY = currentY - startY;
-            const page = title.closest('.page');
+            const pageHeight = page.offsetHeight;
 
-            if (page) {
-                const pageHeight = page.offsetHeight;
-                if (deltaY > pageHeight * 0.2) { // Verifica se o movimento foi maior que 20% da altura
-                    const closeButton = page.querySelector('.closeButton');
-                    if (closeButton) {
-                        closeButton.click(); // Aciona o botão de fechar
-                    }
-                } else {
-                    title.style.transition = 'transform 0.3s ease'; // Adiciona transição para voltar suavemente
-                    title.style.transform = 'translateY(0)'; // Retorna à posição original
+            if (deltaY > pageHeight * 0.2) { // Verifica se o movimento foi maior que 20% da altura
+                const closeButton = page.querySelector('.closeButton');
+                if (closeButton) {
+                    closeButton.click(); // Aciona o botão de fechar
                 }
+            } else {
+                page.style.transition = 'transform 0.3s ease'; // Adiciona transição para voltar suavemente
+                page.style.transform = 'translateY(0)'; // Retorna à posição original
             }
         });
     });
