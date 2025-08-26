@@ -541,7 +541,7 @@
 
             title.addEventListener('touchend', (event) => {
                 touchEndY = event.changedTouches[0].clientY;
-                if (touchStartY - touchEndY > 50) { // Verifica se o deslize foi para cima
+                if (touchEndY - touchStartY > 50) { // Verifica se o deslize foi para baixo
                     const page = title.closest('.page');
                     if (page) {
                         const closeButton = page.querySelector('.closeButton');
