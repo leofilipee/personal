@@ -593,7 +593,7 @@
             const deltaY = currentY - startY;
             const pageHeight = page.offsetHeight;
 
-            if (deltaY > pageHeight * 0.10) { // Verifica se o movimento foi maior que 10% da altura
+            if (deltaY > pageHeight * 0.05) { // Verifica se o movimento foi maior que 5% da altura
                 const closeButton = page.querySelector('.closeButton');
                 if (closeButton) {
                     closeButton.click(); // Aciona o botão de fechar
