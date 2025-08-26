@@ -10,14 +10,16 @@
     /* DarkMode Colors */
     --dark-primary-color: #F38064;
     --dark-secondary-color: #D47057;
-    --dark-background-color: #222222;
+    --dark-background-color: #061A2D;
     --dark-text-color: #ffffff;
+    --dark-main-button-color: #073e7555;
 
     /* LightMode Colors */
     --light-primary-color: #F38064;
     --light-secondary-color: #D47057;
     --light-background-color: #ffffff;
     --light-text-color: #222222;
+    --light-main-button-color: #EB946055;
 
     --font-family: 'Poppins', sans-serif;
 
@@ -25,6 +27,9 @@
     --background-color: var(--dark-background-color);
     --text-color: var(--dark-text-color);
     --primary-color: var(--dark-primary-color);
+
+    --dark-presentation-span-color: #0069cc;
+    --light-presentation-span-color: #F38064;
 }
 
 body.light-mode {
@@ -56,17 +61,27 @@ body {
     background-color: var(--background-color);
     color: var(--text-color);
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    display: grid;
+    grid-template-rows: 10vh auto 10vh; /* Header e Footer com 10vh, Main ocupa o restante */
+    grid-template-areas: 
+        "header"
+        "main"
+        "footer";
+    height: 100vh; /* Garante que o grid ocupe toda a altura da viewport */
+    margin: 0;
 }
 
-/* Ajuste para evitar problemas com 100vh em dispositivos móveis */
-html,
+/* Define o background para o modo claro com camada clara */
 body {
-    height: 100dvh;
-    /* Usa dynamic viewport height para evitar exceder a barra de navegação */
+    background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.5)), url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/150072ec-59a6-45e0-ad46-01ca331acb8b/dhd1hnm-83557fea-db79-487b-944b-d73b0f129461.jpg/v1/fill/w_1920,h_1440,q_75,strp/a_simple_room_by_paper10ve_dhd1hnm-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTQ0MCIsInBhdGgiOiJcL2ZcLzE1MDA3MmVjLTU5YTYtNDVlMC1hZDQ2LTAxY2EzMzFhY2I4YlwvZGhkMWhubS04MzU1N2ZlYS1kYjc5LTQ4N2ItOTQ0Yi1kNzNiMGYxMjk0NjEuanBnIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.y4J48oTE4QcsGzojbCtpefvq2Cz9YzJG-5PQn-QVxKg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Define o background para o modo escuro com camada escura */
+body.dark-mode {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url('https://cdn.cgdream.ai/_next/image?url=https%3A%2F%2Fapi.cgdream.ai%2Frails%2Factive_storage%2Fblobs%2Fredirect%2FeyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBNENiY1E9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ%3D%3D--8942f29e213b5bfb0a654542f7718e6d68a5a718%2Fc9c7392b-9750-442b-baa2-ab94d09dcd43_1.png&w=1080&q=95');
 }
 
 /* ------------------------------ */
@@ -75,17 +90,18 @@ body {
 header {
     margin: 20px;
     padding: 15px 15px 0 0;
+    grid-area: header;
 }
 
 header .controlButtons {
     display: flex;
     justify-content: flex-end;
-    gap: 20px;
+    gap: 30px;
 }
 
 /* Ajustando o tamanho dos ícones no header */
 header i {
-    font-size: 1.5rem;
+    font-size: 2rem;
     /* Mesmo tamanho dos ícones na classe option */
     cursor: pointer;
     /* Adicionando cursor pointer aos ícones no header */
@@ -95,42 +111,44 @@ header i {
 
 /* Adicionando animações de hover e active aos ícones no header */
 header i:hover {
-    color: var(--dark-primary-color);
+    color: var(--light-primary-color);
     transform: scale(1.2);
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
 header i:active {
-    color: var(--dark-secondary-color);
+    color: var(--light-primary-color);
     transform: scale(0.95);
     transition: transform 0.2s ease, color 0.2s ease;
+}
+
+/* Define a cor dos ícones no header para o modo escuro */
+body.dark-mode header i {
+    color: var(--text-color);
+}
+
+body.dark-mode header i:hover, body.dark-mode header i:active {
+    color: var(--dark-presentation-span-color);
 }
 
 /* ------------------------------ */
 /* Main Section */
 /* ------------------------------ */
+
 main {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 10px;
-    flex: 1;
+    grid-area: main;
+    margin: 10px; /* Centraliza o main horizontalmente */
+    padding: 10px; /* Adiciona espaçamento interno ao main */
+    overflow: hidden; /* Oculta o conteúdo que transborda */
+    /* centraliza o conteúdo do main no body */
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    height: auto;
-    /* Permite que o conteúdo determine a altura */
-    box-sizing: border-box;
 }
 
-/* Ajustando a altura da div container dentro do main */
 .container {
-    height: 85%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 }
 
@@ -146,49 +164,68 @@ section#presentation h1 span {
     transition: color 0.3s ease;
 }
 
+/* Define a cor do span dentro do h1 na seção presentation para o modo claro */
+section#presentation h1 span {
+    color: var(--light-presentation-span-color);
+}
+
+/* Define a cor do span dentro do h1 na seção presentation para o modo escuro */
+body.dark-mode section#presentation h1 span {
+    color: var(--dark-presentation-span-color);
+}
+
 /* Alterando o layout de mainButtons para grid */
 section#mainButtons {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, auto);
-    justify-content: center;
-    align-items: center;
+    display: grid; /* Permite o uso de grid layout na seção mainButtons */
+    grid-template-columns: repeat(3, 1fr); /* Define 3 colunas de igual largura */
+    grid-template-rows: repeat(2, 1fr); /* Define 2 linhas de igual altura */
+    gap: 30px 20px; /* Adiciona espaçamento entre os itens */
 }
 
 section#mainButtons .option {
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
-    transition: color 0.3s ease;
-    color: var(--text-color);
-    cursor: pointer; /* Garante que toda a área seja clicável */
-    padding: 20px; /* Adiciona espaçamento interno para aumentar a área clicável */
-    width: 100%; /* Garante que o botão ocupe toda a largura disponível */
-    height: 100%; /* Garante que o botão ocupe toda a altura disponível */
-}
-
-section#mainButtons .option:hover {
-    color: var(--primary-color);
-    transform: scale(1.2);
+    justify-content: center;
+    cursor: pointer;
     transition: transform 0.3s ease;
-    cursor: pointer;
 }
 
-section#mainButtons .option:active {
-    color: var(--secondary-color);
-    transform: scale(0.95);
-    transition: transform 0.1s ease;
-}
-
-section#mainButtons label:hover {
-    cursor: pointer;
-}
-
-/* Aumentando o tamanho dos ícones */
+/* Estiliza o ícone dentro do mainButton */
 section#mainButtons .option i {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    margin-bottom: 5px;
+    background-color: var(--light-main-button-color);
+    border: 1px solid var(--light-primary-color);
+    border-radius: 7px;
+    transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
+    width: 70px;
+    height: 70px;
+    color: var(--light-presentation-span-color);
+}
+
+body.dark-mode section#mainButtons .option i {
+    background-color: var(--dark-main-button-color);
+    border: 1px solid var(--dark-presentation-span-color);
+    color: var(--dark-presentation-span-color);
+}
+
+section#mainButtons .option i:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
+}
+
+section#mainButtons .option i:active {
+    transform: scale(0.95);
+    transition: transform 0.2s ease;
+}
+
+/* Estiliza o label para ficar estático abaixo do ícone */
+section#mainButtons .optionlabel {
+    color: var(--text-color);
 }
 
 /* ------------------------------ */
@@ -201,15 +238,10 @@ footer {
     position: fixed;
     width: 100%;
     bottom: 0;
-    background-color: var(--background-color);
-    padding: 10px 0;
+    padding: 20px 0;
     color: var(--text-color);
     transition: background-color 0.3s ease, color 0.3s ease;
-
-}
-
-footer p {
-    margin: 0;
+    grid-area: footer;
 }
 
 footer a {
@@ -221,6 +253,20 @@ footer a {
 
 footer a:hover {
     text-decoration: underline;
+}
+
+/* ------------------------------ */
+/* Characters */
+/* ------------------------------ */
+
+.char {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background-color: var(--primary-color);
+    right: 0;
+    bottom: 0;
+    display: none;
 }
 
 /* ------------------------------ */
@@ -357,7 +403,6 @@ main {
 }
 
 #pages .title i {
-    display: none;
     font-size: 1.5rem;
     color: var(--text-color);
     transition: color 0.3s ease, transform 0.3s ease;
@@ -668,5 +713,6 @@ main {
 }
 
 #pages .closeButton {
-    cursor: pointer !important; /* Garante que o cursor seja exibido como pointer */
+    cursor: pointer !important;
+    /* Garante que o cursor seja exibido como pointer */
 }

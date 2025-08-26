@@ -30,24 +30,24 @@
                 <p>Desenvolvedor web front-end</p>
             </section>
             <section id="mainButtons">
-                <div class="option about" onclick="openPage('about')">
-                    <i class="fa-solid fa-user"></i>
+                <div class="option about">
+                    <i class="fa-solid fa-user" onclick="openPage('about')"></i>
                     <label for="about">Sobre</label>
                 </div>
-                <div class="option project" onclick="openPage('project')">
-                    <i class="fa-solid fa-folder-open"></i>
+                <div class="option project">
+                    <i class="fa-solid fa-folder-open" onclick="openPage('project')"></i>
                     <label for="project">Projetos</label>
                 </div>
-                <div class="option experience" onclick="openPage('experience')">
-                    <i class="fa-solid fa-briefcase"></i>
+                <div class="option experience">
+                    <i class="fa-solid fa-briefcase" onclick="openPage('experience')"></i>
                     <label for="experience">Experiência</label>
                 </div>
-                <div class="option formation" onclick="openPage('formation')">
-                    <i class="fa-solid fa-school"></i>
+                <div class="option formation">
+                    <i class="fa-solid fa-school" onclick="openPage('formation')"></i>
                     <label for="formation">Formação</label>
                 </div>
-                <div class="option faq" onclick="openPage('faq')">
-                    <i class="fa-solid fa-question"></i>
+                <div class="option faq">
+                    <i class="fa-solid fa-question" onclick="openPage('faq')"></i>
                     <label for="faq">FAQ</label>
                 </div>
                 <div class="option contact" onclick="openPage('contact')">
@@ -311,6 +311,10 @@
             </section>
         </div>
 
+        <div class="char">
+
+        </div>
+
     </main>
 
     <footer>
@@ -320,40 +324,45 @@
     <script>
 
         /* Gestão do Modo Escuro/Claro */
-        const clickSound = new Audio('audio/click-in.wav');
         const darkLightModeButton = document.querySelector('#darkLightMode i');
         const root = document.documentElement;
+        const body = document.body;
 
-        darkLightModeButton.addEventListener('click', () => {
-            playClickSound(clickSound); // Usa a função centralizada para tocar o som
-
-            if (darkLightModeButton.classList.contains('fa-sun')) {
-                // Alterar para o modo Light
-                darkLightModeButton.classList.remove('fa-sun');
-                darkLightModeButton.classList.add('fa-moon');
-                root.style.setProperty('--background-color', 'var(--light-background-color)');
-                root.style.setProperty('--text-color', 'var(--light-text-color)');
-                root.style.setProperty('--primary-color', 'var(--light-primary-color)');
-                root.style.setProperty('--secondary-color', 'var(--light-secondary-color)');
-            } else {
-                // Alterar para o modo Dark
+        /* Função para alterar o tema */
+        function toggleTheme(isDarkMode) {
+            if (isDarkMode) {
                 darkLightModeButton.classList.remove('fa-moon');
                 darkLightModeButton.classList.add('fa-sun');
                 root.style.setProperty('--background-color', 'var(--dark-background-color)');
                 root.style.setProperty('--text-color', 'var(--dark-text-color)');
                 root.style.setProperty('--primary-color', 'var(--dark-primary-color)');
                 root.style.setProperty('--secondary-color', 'var(--dark-secondary-color)');
+                body.classList.add('dark-mode');
+            } else {
+                darkLightModeButton.classList.remove('fa-sun');
+                darkLightModeButton.classList.add('fa-moon');
+                root.style.setProperty('--background-color', 'var(--light-background-color)');
+                root.style.setProperty('--text-color', 'var(--light-text-color)');
+                root.style.setProperty('--primary-color', 'var(--light-primary-color)');
+                root.style.setProperty('--secondary-color', 'var(--light-secondary-color)');
+                body.classList.remove('dark-mode');
             }
+        }
+
+        // Configuração inicial para garantir que o modo dark seja ativado corretamente
+        toggleTheme(true);
+
+        darkLightModeButton.addEventListener('click', () => {
+            const isDarkMode = darkLightModeButton.classList.contains('fa-sun');
+            toggleTheme(!isDarkMode);
         });
 
 
         /* Botões de Fechar */
-        const closeSound = new Audio('audio/click-out.wav');
         const closeButtons = document.querySelectorAll('.closeButton');
 
         closeButtons.forEach((button) => {
             button.addEventListener('click', (event) => {
-                playClickSound(closeSound); // Usa o som específico para os botões de fechar
                 const page = event.target.closest('.about, .project, .experience, .formation, .faq, .contact'); // Seleciona a página correspondente ao botão
                 if (page) {
                     page.classList.remove('open');
@@ -366,39 +375,56 @@
         });
 
         /* Gestão das Páginas */
-        const mainButtonsDivs = document.querySelectorAll('.option > div');
-        const mainButtonsLabels = document.querySelectorAll('.option > label');
+        const mainButtonsIcons = document.querySelectorAll('.option > i');
         const pages = document.querySelectorAll('#pages > div');
         const overlay = document.querySelector('#overlay');
 
         /* Função para abrir uma página */
         function openPage(targetClass) {
-
-            // Fechar todas as páginas com animação
             pages.forEach((page) => {
-                if (page.classList.contains('open')) {
-                    page.classList.remove('open');
-                    page.classList.add('close');
-                }
+                page.classList.remove('open');
+                page.classList.add('close');
             });
 
-            // Abrir a página correspondente
             const targetPage = document.querySelector(`#pages .${targetClass}`);
             if (targetPage) {
                 targetPage.classList.remove('close');
                 targetPage.classList.add('open');
                 overlay.style.display = 'block';
-                overlay.style.opacity = '1'; // Mostrar a sobreposição rapidamente
+                overlay.style.opacity = '1';
             }
         }
 
-        /* Gestão dos Botões */
-        const openSound = new Audio('audio/click-in.wav');
-        const openButtons = document.querySelectorAll('.option');
-        openButtons.forEach((button) => {
-            button.addEventListener('mouseup', () => {
-                playClickSound(openSound); // Usa o som específico para os botões de abrir
-                const targetClass = button.classList[0];
+        /* Função para fechar uma página */
+        function closePage(page) {
+            if (page) {
+                page.classList.remove('open');
+                page.classList.add('close');
+                setTimeout(() => {
+                    page.style.display = 'none';
+                    overlay.style.opacity = '0';
+                    setTimeout(() => {
+                        overlay.style.display = 'none';
+                    }, 100);
+                }, 100);
+            }
+        }
+
+        overlay.addEventListener('click', () => {
+            const openPage = document.querySelector('#pages > div.open');
+            closePage(openPage);
+        });
+
+        closeButtons.forEach((button) => {
+            button.addEventListener('click', (event) => {
+                const page = event.target.closest('.page');
+                closePage(page);
+            });
+        });
+
+        mainButtonsIcons.forEach((icon) => {
+            icon.addEventListener('click', () => {
+                const targetClass = icon.parentElement.classList[1];
                 openPage(targetClass);
             });
         });
@@ -409,41 +435,6 @@
                 const targetClass = label.getAttribute('for');
                 openPage(targetClass);
             });
-        });
-
-        /* Gestão dos Botões de Fechar */
-        closeButtons.forEach((button) => {
-            button.addEventListener('click', (event) => {
-                const page = event.target.closest('.about, .project, .experience, .formation, .faq, .contact');
-                if (page) {
-                    page.classList.remove('open');
-                    page.classList.add('close');
-                    setTimeout(() => {
-                        page.style.display = 'none';
-                        overlay.style.opacity = '0'; // Esconder a sobreposição rapidamente
-                        setTimeout(() => {
-                            overlay.style.display = 'none';
-                        }, 100); // Tempo da transição da sobreposição
-                    }, 100); // Tempo da animação
-                }
-            });
-        });
-
-        /* Fechar a página ao clicar na sobreposição */
-        overlay.addEventListener('click', () => {
-            // Fechar a página aberta
-            const openPage = document.querySelector('#pages > div.open');
-            if (openPage) {
-                openPage.classList.remove('open');
-                openPage.classList.add('close');
-                setTimeout(() => {
-                    openPage.style.display = 'none';
-                    overlay.style.opacity = '0';
-                    setTimeout(() => {
-                        overlay.style.display = 'none';
-                    }, 100); // Tempo da transição da sobreposição
-                }, 100); // Tempo da animação da página
-            }
         });
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -487,137 +478,26 @@
                     window.location.href = `mailto:${emailAddress}`;
                 });
             }
-        });
 
-        
-        const soundToggleButton = document.querySelector('#soundOnOff i');
-        let isMuted = false; // Estado inicial do som
+            const isDarkMode = darkLightModeButton.classList.contains('fa-sun');
 
-        // Função central para verificar o estado do som
-        function updateAudioState() {
-            const allAudios = document.querySelectorAll('audio');
-            allAudios.forEach(audio => {
-                audio.muted = isMuted;
-            });
-        }
-
-        soundToggleButton.addEventListener('click', () => {
-            if (soundToggleButton.classList.contains('fa-volume-high')) {
-                // Mute os sons
-                soundToggleButton.classList.remove('fa-volume-high');
-                soundToggleButton.classList.add('fa-volume-xmark');
-                isMuted = true;
+            if (isDarkMode) {
+                body.classList.add('dark-mode'); // Garante que o tema dark tenha o background correto ao carregar
             } else {
-                // Ative os sons
-                soundToggleButton.classList.remove('fa-volume-xmark');
-                soundToggleButton.classList.add('fa-volume-high');
-                isMuted = false;
-
-                // Toca o som ao ativar o áudio
-                const toggleSound = new Audio('audio/click-in.wav');
-                playClickSound(toggleSound);
+                body.classList.remove('dark-mode'); // Garante que o tema light tenha o background correto ao carregar
             }
-
-            // Atualize o estado de todos os áudios
-            updateAudioState();
         });
 
-        // Exemplo de uso da função central em outros eventos
-        function playClickSound(audioElement) {
-            if (!isMuted) {
-                audioElement.currentTime = 0;
-                audioElement.play();
-            }
-        }
+        /* Adicionando som ao evento mouseup nos ícones do header */
+        const headerIcons = document.querySelectorAll('header .controlButtons i');
+        const clickSound = new Audio('audio/click-in.wav');
 
-        // Adiciona evento de deslize para dispositivos móveis na classe title
-        document.querySelectorAll('.page .title').forEach((title) => {
-            let touchStartY = 0;
-            let touchEndY = 0;
-
-            title.addEventListener('touchstart', (event) => {
-                touchStartY = event.changedTouches[0].clientY;
-            });
-
-            title.addEventListener('touchend', (event) => {
-                touchEndY = event.changedTouches[0].clientY;
-                if (touchEndY - touchStartY > 50) { // Verifica se o deslize foi para baixo
-                    const page = title.closest('.page');
-                    if (page) {
-                        const closeButton = page.querySelector('.closeButton');
-                        if (closeButton) {
-                            closeButton.removeEventListener('click', playCloseSound); // Remove o som temporariamente
-                            closeButton.click(); // Aciona o botão de fechar
-                            setTimeout(() => {
-                                closeButton.addEventListener('click', playCloseSound); // Restaura o som após o clique
-                            }, 100);
-                        }
-                    }
-                }
+        headerIcons.forEach(icon => {
+            icon.addEventListener('mouseup', () => {
+                clickSound.currentTime = 0; // Reinicia o som
+                clickSound.play(); // Reproduz o som
             });
         });
-
-        // Função para tocar o som de fechar
-        function playCloseSound() {
-            playSound(closeSound);
-        }
-
-        // Adiciona o evento de som aos botões de fechar
-        document.querySelectorAll('.closeButton').forEach((button) => {
-            button.addEventListener('click', playCloseSound);
-        });
-
-        document.querySelectorAll('.page').forEach((page) => {
-        let isDragging = false;
-        let startY = 0;
-        let currentY = 0;
-
-        const title = page.querySelector('.title');
-
-        title.addEventListener('touchstart', (event) => {
-            isDragging = true;
-            startY = event.touches[0].clientY;
-            page.style.transition = 'none'; // Remove transições para suavizar o movimento
-        });
-
-        title.addEventListener('touchmove', (event) => {
-            if (isDragging) {
-                currentY = event.touches[0].clientY;
-                const deltaY = currentY - startY;
-                page.style.transform = `translateY(${deltaY}px)`; // Move a página com o dedo
-            }
-        });
-
-        title.addEventListener('touchend', () => {
-            isDragging = false;
-            const deltaY = currentY - startY;
-            const pageHeight = page.offsetHeight;
-
-            if (deltaY > pageHeight * 0.05) { // Verifica se o movimento foi maior que 5% da altura
-                const closeButton = page.querySelector('.closeButton');
-                if (closeButton) {
-                    closeButton.click(); // Aciona o botão de fechar
-                }
-
-                // Reseta os valores da página
-                page.style.transition = '';
-                page.style.transform = '';
-                page.style.display = '';
-            } else {
-                page.style.transition = 'transform 0.1s ease'; // Reduz o tempo de transição para maior responsividade
-                page.style.transform = 'translateY(0)'; // Retorna à posição original
-            }
-        });
-    });
-
-    document.addEventListener('touchmove', (event) => {
-            const openPage = document.querySelector('#pages > div.open');
-            const isTitle = event.target.closest('.title'); // Verifica se o deslize é no título
-
-            if (openPage && !isTitle) {
-                event.preventDefault(); // Desativa o pull-to-refresh apenas se não for no título
-            }
-        }, { passive: false });
     </script>
 
 </body>
