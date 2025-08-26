@@ -272,12 +272,13 @@ footer a:hover {
 /* ------------------------------ */
 /* Pages */
 /* ------------------------------ */
+#pages .about,
 #pages .project,
 #pages .experience,
 #pages .formation,
 #pages .faq,
 #pages .contact {
-    display: block;
+    display: none;
     /* Visível inicialmente para edição */
     position: fixed;
     bottom: 0;
@@ -354,7 +355,7 @@ main {
 }
 
 #pages>div {
-    display: block !important;
+    display: block;
     /* Garante que todas as páginas estejam visíveis por padrão */
     position: absolute;
     /* Posiciona as páginas dentro do main */
@@ -688,6 +689,7 @@ main {
 }
 
 #pages .contact .content .email-draw {
+    display: none;
     background-color: white;
     width: 100px;
     height: 100px;
@@ -702,6 +704,8 @@ main {
     padding: 10px 20px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    display: block;
+    margin: 50px auto; /* Centraliza horizontalmente */
 }
 
 #pages .contact .content button:hover {

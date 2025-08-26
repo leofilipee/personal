@@ -382,14 +382,22 @@
         /* Função para abrir uma página */
         function openPage(targetClass) {
             pages.forEach((page) => {
-                page.classList.remove('open');
-                page.classList.add('close');
+                if (!page.classList.contains(targetClass)) {
+                    page.classList.remove('open');
+                    page.classList.add('close');
+                    setTimeout(() => {
+                        page.style.display = 'none'; // Oculta apenas as páginas que não estão sendo abertas
+                    }, 300); // Tempo da transição definido no CSS
+                }
             });
 
             const targetPage = document.querySelector(`#pages .${targetClass}`);
             if (targetPage) {
-                targetPage.classList.remove('close');
-                targetPage.classList.add('open');
+                targetPage.style.display = 'block'; // Exibe a página antes de adicionar a classe de abertura
+                setTimeout(() => {
+                    targetPage.classList.remove('close');
+                    targetPage.classList.add('open');
+                }, 10); // Pequeno atraso para garantir que a transição seja aplicada
                 overlay.style.display = 'block';
                 overlay.style.opacity = '1';
             }
@@ -488,15 +496,15 @@
             }
         });
 
-        /* Adicionando som ao evento mouseup nos ícones do header */
-        const headerIcons = document.querySelectorAll('header .controlButtons i');
-        const clickSound = new Audio('audio/click-in.wav');
-
-        headerIcons.forEach(icon => {
-            icon.addEventListener('mouseup', () => {
-                clickSound.currentTime = 0; // Reinicia o som
-                clickSound.play(); // Reproduz o som
+        /* Garantir que todas as páginas estejam fechadas por padrão */
+        document.addEventListener('DOMContentLoaded', () => {
+            pages.forEach((page) => {
+                page.classList.add('close');
+                page.classList.remove('open');
+                page.style.display = 'none';
             });
+            overlay.style.display = 'none';
+            overlay.style.opacity = '0';
         });
     </script>
 
