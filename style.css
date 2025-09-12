@@ -49,6 +49,7 @@ body.light-mode {
 
 h1 {
     font-size: 1.4rem !important;
+    text-align: center;
 }
 
 p {
@@ -476,10 +477,11 @@ main {
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.342);
 }
 
-#pages .about .content .name {
+#pages .about .content .name h1{
     color: var(--primary-color);
     border-radius: 50%;
     margin: 25px auto;
+    text-align: center;
 }
 
 #pages .about .content .description {
